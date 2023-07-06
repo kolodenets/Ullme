@@ -1,5 +1,27 @@
+@use '../../styles/style.scss' as *;
+
 .header {
+  padding-top: 6px;
   position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 5;
+  margin: 0 auto;
+}
+
+.flexContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 100%;
+  
+}
+
+.burgerButton {
+  background: url('../../../public/assets/icons/burger.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
 }
