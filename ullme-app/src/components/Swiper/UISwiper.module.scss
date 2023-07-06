@@ -1,0 +1,43 @@
+@use '../../styles/style.scss' as *;
+
+.slideContainer {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: 323px !important;
+  height: 166px !important;
+  @include petraRegular16;
+  text-transform: uppercase;
+  text-align: center;
+}
+.whiteText {
+  color: $color-white;
+}
+.yellowText {
+  color: $color-yellow;
+}
+.blueGrayText {
+  color: $color-blue-gray;
+}
+.redText {
+  color: $color-red;
+}
+.blackText {
+  color: $color-black-3E;
+}
+
+.blueGray {
+  background-color: $color-blue-gray;
+}
+.peach {
+  background-color: $color-peach;
+}
+.white {
+  background-color: $color-white-D9;
+}
+.firstSlide {
+  width: 223px;
+}
+.secondSlide {
+  width: 199px;
+}
