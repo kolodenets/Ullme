@@ -4,6 +4,7 @@ import Button from "../../components/Button/Button";
 import Logo from "/assets/images/Logo.png";
 import Circle from "/assets/icons/Status-Normal.svg";
 import s from "./Home.module.scss";
+import UISwiper from "../../components/Swiper/UISwiper";
 
 const Home = () => {
   const [activeLongText, setActiveLongText] = useState(false);
@@ -27,6 +28,7 @@ const Home = () => {
           Check similarity
         </Button>
       </section>
+      <UISwiper/>
       <section className={cn("container", s.secondSection)}>
         <div className={s.center}>
           <p className={s.secondInfo}>
