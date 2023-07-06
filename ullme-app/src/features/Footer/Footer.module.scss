@@ -1,0 +1,15 @@
+@use '../../styles/style.scss' as *;
+
+.footer{
+  background-color: $color-blue-gray;
+  width: 100vw;
+  padding: 105px 0;
+
+}
+
+.footerContent {
+  margin: 0 auto;
+  display: flex;
+  width: 184px;
+  gap: 44px;
+}

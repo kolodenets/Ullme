@@ -1,10 +1,14 @@
+import cn from 'classnames'
 import s from './Header.module.scss'
 
 const Header = () => {
   return (
-    <div>
+    <header className={s.header}>
+      <div className={cn('container')}>
       header
     </div>
+    </header>
+    
   )
 }
 
