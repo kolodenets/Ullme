@@ -115,6 +115,8 @@
   .relativeImage {
     position: relative;
     height: 258px;
+    width: 345px;
+    margin: 0 auto;
     background-image: url('/assets/images/image3.png');
     background-position: center;
     background-repeat: no-repeat;
@@ -123,7 +125,7 @@
     .absolut {
       position: absolute;
       top: 77%;
-      right: 7%;
+      right: 4%;
     }
   }
   .shortText2 {
