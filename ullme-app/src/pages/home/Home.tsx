@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import cn from "classnames";
 import Button from "../../components/Button/Button";
 import Logo from "/assets/images/Logo.png";
@@ -9,6 +10,7 @@ import UISwiper from "../../components/Swiper/UISwiper";
 const Home = () => {
   const [activeLongText, setActiveLongText] = useState(false);
   const [activeLongText2, setActiveLongText2] = useState(false);
+  const navigate = useNavigate();
   return (
     <main className={s.homePageWrapper}>
       <section className={cn("container", s.heroSection)}>
@@ -23,12 +25,12 @@ const Home = () => {
         </p>
         <Button
           className={s.checkSimilarity}
-          onClick={() => console.log("click")}
+          onClick={() => navigate("/uploadPhoto")}
         >
           Check similarity
         </Button>
       </section>
-      <UISwiper/>
+      <UISwiper />
       <section className={cn("container", s.secondSection)}>
         <div className={s.center}>
           <p className={s.secondInfo}>
@@ -99,7 +101,7 @@ const Home = () => {
         </div>
         <Button
           className={s.checkSimilarity}
-          onClick={() => console.log("click")}
+          onClick={() => navigate("/uploadPhoto")}
         >
           Check similarity
         </Button>
@@ -121,7 +123,7 @@ const Home = () => {
         <div className={s.bottomImage}></div>
         <Button
           className={s.checkSimilarity}
-          onClick={() => console.log("click")}
+          onClick={() => navigate("/uploadPhoto")}
         >
           Check similarity
         </Button>
