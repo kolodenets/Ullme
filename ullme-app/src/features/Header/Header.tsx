@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import MainLogo from '../../../public/assets/icons/mainLogo.svg'
+import MainLogo from '../../../public/assets/icons/ullme-web.svg'
 import BurgerMenu from '../../../public/assets/icons/burger.svg'
 import s from './Header.module.scss'
 

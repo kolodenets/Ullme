@@ -62,6 +62,7 @@ button {
 }
 
 .container {
+  max-width: 1200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -85,4 +86,8 @@ button {
 
 .swiper-slide {
   width: unset;
+}
+
+.swiper {
+  overflow: unset;
 }

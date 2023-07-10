@@ -1,21 +1,32 @@
 
 @mixin h1 {
-  font-size: 48px;
+  font-size: 70px;
   font-family: Sora;
   line-height: 105%;
   font-weight: $fw-semibold;
+
+  @include mobile-tablet {
+    font-size: 48px;
+  }
 }
 @mixin h2 {
-  font-size: 36px;
+  font-size: 60px;
   font-family: Sora;
   font-weight: $fw-bold;
   line-height: 105%;
+  @include mobile-tablet {
+    font-size: 36px;
+  }
 }
 @mixin petraRegular16 {
-  font-size: 16px;
+  font-size: 20px;
   font-family: Petra Sans;
   line-height: 140%;
   font-weight: $fw-regular;
   color: $color-black-15;
+
+  @include mobile-tablet {
+    font-size: 16px;
+  }
 }
 
