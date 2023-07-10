@@ -3,6 +3,8 @@ import cn from "classnames";
 import Button from "../../components/Button/Button";
 import Logo from "/assets/images/Logo.png";
 import Circle from "/assets/icons/Status-Normal.svg";
+import Percent from "/assets/icons/percent.svg";
+import MainImage from "/assets/images/image1-web.png";
 import s from "./Home.module.scss";
 import UISwiper from "../../components/Swiper/UISwiper";
 
@@ -11,24 +13,37 @@ const Home = () => {
   const [activeLongText2, setActiveLongText2] = useState(false);
   return (
     <main className={s.homePageWrapper}>
-      <section className={cn("container", s.heroSection)}>
-        <div className={s.image}></div>
-        <h1 className={s.mainTitle}>Do you look alike?</h1>
-        <p className={s.mainInfo}>
-          Scientists have proven that people who look like each other are
-          attracted to each other.
-          <br /> It is laid down by nature. <br />
-          <br /> It's time to test this statement for yourself! Upload photos of
-          your couple and find out how much you look like.
-        </p>
-        <Button
-          className={s.checkSimilarity}
-          onClick={() => console.log("click")}
-        >
-          Check similarity
-        </Button>
+      <section className={s.heroSection}>
+        <div className={s.heroContent}>
+          <div className={s.heroContainer}>
+            <div className={s.heroBody}>
+              <h1 className={s.mainTitle}>Do you look alike?</h1>
+              <h4 className={s.mainSubtitle}>
+                Ullme AI service knows the answer!
+              </h4>
+              <p className={s.mainInfo}>
+                Scientists have proven that people who look like <br /> each other are
+                attracted to each other. It is laid down by nature. <br />
+                <br /> It's time to test this statement for yourself! <br /> Upload
+                photos of your couple and find out how much you look like.
+              </p>
+              <Button
+                className={s.checkSimilarity}
+                onClick={() => console.log("click")}
+              >
+                Check similarity
+              </Button>
+            </div>
+          </div>
+        </div>
+        <div className={s.mainImageContainer}>
+          <img src={MainImage} alt="mainImage" className={s.mainImage} />
+          <div className={s.percentage}>
+            <img src={Percent} alt="percent" className={s.percentImg} />
+          </div>
+        </div>
       </section>
-      <UISwiper/>
+      <UISwiper />
       <section className={cn("container", s.secondSection)}>
         <div className={s.center}>
           <p className={s.secondInfo}>

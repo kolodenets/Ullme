@@ -1,13 +1,17 @@
 @use '../../styles/style.scss' as *;
 
 .header {
-  padding-top: 6px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 5;
-  margin: 0 auto;
+  padding-top: 14px;
+  @include mobile-tablet {
+    position: fixed;
+    padding-top: 6px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5;
+    margin: 0 auto;
+  }
+  
 }
 
 .flexContainer {
