@@ -1,0 +1,14 @@
+@use '../../styles/style.scss' as *;
+
+
+.navbar {
+  @include mobile-tablet {
+    display: none;
+  }
+}
+
+.navbar__menu_item {
+  @include petraRegular16;
+  font-size: 24px;
+  font-weight: $fw-medium;
+}
