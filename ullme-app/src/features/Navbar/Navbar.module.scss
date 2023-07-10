@@ -1,0 +1,8 @@
+@use '../../styles/style.scss' as *;
+
+
+.navbar {
+  @include mobile-tablet {
+    display: none;
+  }
+}
