@@ -1,7 +1,6 @@
 import cn from 'classnames'
 import MainLogo from '../../../public/assets/icons/ullme-web.svg'
 import MainLogoMob from '../../../public/assets/icons/ullme-white.svg'
-import BurgerMenu from '../../../public/assets/icons/burger.svg'
 import s from './Header.module.scss'
 import Navbar from '../Navbar/Navbar'
 
