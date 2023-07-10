@@ -4,11 +4,17 @@
   display: flex !important;
   justify-content: center;
   align-items: center;
-  width: 323px !important;
-  height: 166px !important;
+  width: 634px !important;
+  height: 310px !important;
   @include petraRegular16;
+  font-size: 24px;
   text-transform: uppercase;
   text-align: center;
+
+  @include mobile-tablet {
+    width: 323px !important;
+    height: 166px !important;
+  }
 }
 .whiteText {
   color: $color-white;
@@ -35,9 +41,17 @@
 .white {
   background-color: $color-white-D9;
 }
+
+.firstSlide, .secondSlide {
+  width: 310px;
+}
 .firstSlide {
-  width: 223px;
+  @include mobile-tablet {
+    width: 223px;
+  }
 }
 .secondSlide {
-  width: 199px;
+  @include mobile-tablet {
+    width: 199px;
+  }
 }

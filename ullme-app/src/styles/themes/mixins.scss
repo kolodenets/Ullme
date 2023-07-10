@@ -10,10 +10,13 @@
   }
 }
 @mixin h2 {
-  font-size: 36px;
+  font-size: 60px;
   font-family: Sora;
   font-weight: $fw-bold;
   line-height: 105%;
+  @include mobile-tablet {
+    font-size: 36px;
+  }
 }
 @mixin petraRegular16 {
   font-size: 20px;

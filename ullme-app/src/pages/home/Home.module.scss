@@ -10,7 +10,7 @@
 
 .heroSection {
   display: flex;
-  margin-top: 86px;
+  margin-top: 48px;
   margin-bottom: 102px;
   // margin-left: 5%;
   // padding-top: 86px !important;
@@ -150,17 +150,44 @@
 }
 .checkSimilarity {
   margin-top: 44px;
+  max-width: 301px;
   @include mobile-tablet {
     margin: 44px auto 0;
   }
 }
 
 .secondSection {
+  margin-top: 124px !important;
+  @include mobile-tablet {
+    margin-top: 0;
+  }
+
+  .secondSection__contentContainer {
+    display: flex;
+    gap: 30px;
+    align-items: flex-end;
+    margin-bottom: 56px;
+  }
+  .secondSection__imageWrapper {
+    max-width: 670px;
+  }
+
+  .secondSection__titleContainer {
+    display: flex;
+    flex-direction: column;
+
+    @include mobile-tablet {
+      flex-direction: column-reverse;
+    }
+  }
 
   .center {
-    margin-top: 44px;
-    margin-bottom: 36px;
-    padding: 0 12px;
+    margin-top: 24px;
+    max-width: 470px;
+
+    @include mobile-tablet {
+      padding: 0 12px;
+    }
   }
 
   .secondInfo {
@@ -169,12 +196,9 @@
     text-transform: uppercase;
   }
   .secondImage {
+    max-width: 670px;
     height: 394px;
-    width: 100vw;
-    background-image: url('/assets/images/image2.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 20px 0;
+    margin-top: 44px
   }
 
   .shortText {
@@ -195,44 +219,97 @@
     -webkit-line-clamp: unset;
   }
 
+  
+
   .phraseBackground {
     width: 100vw;
     background-color: $color-white-D9;
   }
 
   .phraseContainer {
-    padding: 61px 39px;
+    margin: 106px auto;
+    max-width: 748px;
     @include petraRegular16;
-    font-size: 17px;
     text-align: center;
+    font-size: 30px;
+    @include mobile-tablet {
+      margin: 0 auto;
+      font-size: 17px;
+      padding: 61px 39px;
+    }
   }
 }
+
+.regularText {
+  height: unset !important;
+  -webkit-line-clamp: unset !important;
+  margin-bottom: 0 !important;
+  min-width: 400px;
+}
+
+
 
 .thirdSection {
   width: 100vw;
   background-color: $color-blue-gray;
-  padding-bottom: 44px;
+  padding-bottom: 201px;
+
+  .thirdSection__contentContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding-top: 80px;
+  }
+
+  .thirdSection__wrapper {
+    max-width: 470px;
+  }
 
   .likeness {
-    margin: 44px 0 20px;
+    margin: 52px 0 24px;
     color: $color-white;
-    text-align: center;
+    text-align: left;
   }
   .logoImg {
     display: flex;
-    justify-content: center;
-    margin-bottom: 36px;
+    img {
+      width: 85px;
+      height: 86px;
+    }
+  }
+
+  .bigRevativeImage {
+      position: relative;
+      height: 698px;
+      max-width: 670px;
+      // background-image: url('/assets/images/image3-web.png');
+      // background-position: center;
+      // background-repeat: no-repeat;
+
+      @include mobile-tablet {
+        display: none;
+      }
+      .bigAbsolut {
+        position: absolute;
+        top: 93%;
+        right: 5%;
+      }
   }
 
   .relativeImage {
-    position: relative;
-    height: 258px;
-    width: 345px;
-    margin: 0 auto;
-    background-image: url('/assets/images/image3.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    margin-bottom: 80px;
+    display: none;
+    @include mobile-tablet {
+      display: block;
+      position: relative;
+      height: 258px;
+      width: 345px;
+      margin: 0 auto;
+      background-image: url('/assets/images/image3.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-bottom: 80px;
+    }
+    
 
     .absolut {
       position: absolute;
@@ -261,20 +338,35 @@
 }
 
 .fourthSection {
-  padding-top: 44px !important;
-  padding-bottom: 44px !important;
+  padding-top: 56px !important;
+  padding-bottom: 56px !important;
+  flex-direction: row-reverse !important;
+  gap: 30px;
+  align-items: flex-start !important;
+
+  .fourthSection__titleContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 569px;
+  }
+  .fourthSection__imageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
 
   .check {
     text-align: left;
-    margin-bottom: 12px;
+    margin-bottom: 24px;
+    max-width: 550px;
   }
 
   .bottomImage {
-    margin-top: 20px;
-    height: 252px;
-    width: 100vw;
-    background-image: url('/assets/images/image4.png');
-    background-position: center;
-    background-repeat: no-repeat;
+    height: 378px;
+    width: 570px;
+
+  }
+  .bottomBtn {
+    margin-top: 12px;
   }
 }
