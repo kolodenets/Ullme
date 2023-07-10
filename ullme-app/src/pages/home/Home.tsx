@@ -167,7 +167,9 @@ const Home = () => {
 
         {/* <div className="container"></div> */}
       </section>
-      <section className={s.fourthSection}>
+      <section className={cn(s.fourthSection, {
+            ["container"]: window.innerWidth > 768,
+          })}>
         <div
           className={cn(s.fourthSection__titleContainer, {
             ["container"]: window.innerWidth < 768,
