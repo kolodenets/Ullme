@@ -449,10 +449,12 @@
     @include mobile-tablet {
       width: unset;
       height: unset;
-      margin-bottom: 44px;
     }
   }
   .bottomBtn {
     margin-top: 12px;
+    @include mobile-tablet {
+      margin: 44px auto 0;
+    }
   }
 }

@@ -6,3 +6,9 @@
     display: none;
   }
 }
+
+.navbar__menu_item {
+  @include petraRegular16;
+  font-size: 24px;
+  font-weight: $fw-medium;
+}
