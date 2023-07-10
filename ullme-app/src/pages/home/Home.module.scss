@@ -39,6 +39,10 @@
     display: flex;
     align-items: center;
     flex: 0 0 100%;
+
+    @include mobile-tablet {
+      justify-content: center;
+    }
   }
 
   .heroBody {
@@ -46,6 +50,7 @@
 
     @include mobile-tablet {
       width: unset;
+      max-width: 500px;
     }
   }
   .mainImageContainer {
@@ -159,7 +164,7 @@
 .secondSection {
   margin-top: 124px !important;
   @include mobile-tablet {
-    margin-top: 0;
+    margin-top: 44px !important;
   }
 
   .secondSection__contentContainer {
@@ -167,6 +172,11 @@
     gap: 30px;
     align-items: flex-end;
     margin-bottom: 56px;
+
+    @include mobile-tablet {
+      flex-direction: column;
+      margin-bottom: 0;
+    }
   }
   .secondSection__imageWrapper {
     max-width: 670px;
@@ -178,6 +188,7 @@
 
     @include mobile-tablet {
       flex-direction: column-reverse;
+      max-width: 500px;
     }
   }
 
@@ -194,11 +205,26 @@
     @include petraRegular16;
     font-weight: $fw-semibold;
     text-transform: uppercase;
+
+    @include mobile-tablet {
+      margin-bottom: 36px;
+    }
+  }
+  .secondInfo__mobile {
+    @include mobile-tablet {
+      padding: 0 23px;
+    }
   }
   .secondImage {
     max-width: 670px;
     height: 394px;
-    margin-top: 44px
+    margin-top: 44px;
+    @include mobile-tablet {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
   }
 
   .shortText {
@@ -213,9 +239,13 @@
     overflow-y: hidden;
     margin-bottom: 20px;
 
+    @include mobile-tablet {
+      max-width: 500px;
+    }
+
   }
   .longText {
-    height: 337px;
+    height: fit-content;
     -webkit-line-clamp: unset;
   }
 
@@ -233,6 +263,7 @@
     text-align: center;
     font-size: 30px;
     @include mobile-tablet {
+      max-width: 560px;
       margin: 0 auto;
       font-size: 17px;
       padding: 61px 39px;
@@ -254,27 +285,61 @@
   background-color: $color-blue-gray;
   padding-bottom: 201px;
 
+  @include mobile-tablet {
+    padding-bottom: 44px;
+  }
+
   .thirdSection__contentContainer {
     display: flex;
     flex-direction: row;
     gap: 30px;
     padding-top: 80px;
+
+    @include mobile-tablet {
+      display: flex;
+      justify-content: center;
+      padding-top: 44px;
+    }
   }
 
   .thirdSection__wrapper {
     max-width: 470px;
+
+    @include mobile-tablet {
+      max-width: 500px;
+    }
+  }
+  .thirdSection__titleContainer {
+    display: flex;
+    flex-direction: column;
+
+    @include mobile-tablet {
+      flex-direction: column-reverse;
+      align-items: center;
+      margin-bottom: 36px;
+    }
   }
 
   .likeness {
     margin: 52px 0 24px;
     color: $color-white;
     text-align: left;
+
+    @include mobile-tablet {
+      text-align: center;
+      margin: 0 0 20px;
+    }
   }
   .logoImg {
     display: flex;
     img {
       width: 85px;
       height: 86px;
+
+      @include mobile-tablet {
+        width: 46px;
+        height: 54px;
+      }
     }
   }
 
@@ -332,7 +397,7 @@
 
   }
   .longText2 {
-    height: 223px;
+    height: fit-content;
     -webkit-line-clamp: unset;
   }
 }
@@ -344,15 +409,32 @@
   gap: 30px;
   align-items: flex-start !important;
 
+  @include mobile-tablet {
+    flex-direction: column !important;
+    padding-bottom: 44px !important;
+    gap: 20px;
+  }
+
   .fourthSection__titleContainer {
     display: flex;
     flex-direction: column;
     max-width: 569px;
+
+    @include mobile-tablet {
+      max-width: 500px;
+      margin-bottom: 20px;
+    }
   }
+
   .fourthSection__imageContainer {
     display: flex;
     flex-direction: column;
     align-items: end;
+
+    @include mobile-tablet {
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   .check {
@@ -364,7 +446,11 @@
   .bottomImage {
     height: 378px;
     width: 570px;
-
+    @include mobile-tablet {
+      width: unset;
+      height: unset;
+      margin-bottom: 44px;
+    }
   }
   .bottomBtn {
     margin-top: 12px;

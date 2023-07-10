@@ -7,6 +7,7 @@ import CircleWeb from "/assets/icons/Status-Normal-web.svg";
 import Percent from "/assets/icons/percent.svg";
 import MainImage from "/assets/images/image1-web.png";
 import Parents from "/assets/images/parents.png";
+import ParentsMob from "/assets/images/parents-mob.png";
 import SecondImage from "../../../public/assets/images/image2-web.png";
 import SecondImageMobile from "../../../public/assets/images/image2.png";
 import ThirdImage from "../../../public/assets/images/image3-web.png";
@@ -27,10 +28,11 @@ const Home = () => {
                 Ullme AI service knows the answer!
               </h4>
               <p className={s.mainInfo}>
-                Scientists have proven that people who look like <br /> each
-                other are attracted to each other. It is laid down by nature.{" "}
-                <br />
-                <br /> It's time to test this statement for yourself! <br />{" "}
+                Scientists have proven that people who look like{" "}
+                {window.innerWidth > 768 && <br />} each other are attracted to
+                each other. It is laid down by nature. <br />
+                <br /> It's time to test this statement for yourself!{" "}
+                {window.innerWidth > 768 && <br />}
                 Upload photos of your couple and find out how much you look
                 like.
               </p>
@@ -55,7 +57,7 @@ const Home = () => {
         <div className={s.secondSection__contentContainer}>
           <div className={s.secondSection__imageWrapper}>
             <div className={s.secondSection__titleContainer}>
-              <h2 className={s.h2}>
+              <h2 className={cn(s.h2, s.secondInfo__mobile)}>
                 When looking for love, start by looking in the mirror
               </h2>
               <div className={s.center}>
@@ -77,7 +79,10 @@ const Home = () => {
             className={cn(
               s.shortText,
               { [s.longText]: window.innerWidth < 768 && activeLongText },
-              { [s.regularText]: window.innerWidth > 768 }
+              {
+                [s.regularText]: window.innerWidth > 768,
+                ["container"]: window.innerWidth < 768,
+              }
             )}
             onClick={() => setActiveLongText(!activeLongText)}
           >
@@ -124,15 +129,22 @@ const Home = () => {
               className={cn(s.shortText2, {
                 [s.longText2]: activeLongText2,
                 [s.regularText]: window.innerWidth > 768,
-                ["container"]: window.innerWidth < 768,
+                // ["container"]: window.innerWidth < 768,
               })}
               onClick={() => setActiveLongText2(!activeLongText2)}
             >
               <span>
                 Our algorithm analyzes your faces according to a variety of
                 parameters and creates a special mask to compare facial
-                geometry. And today we get the result with an accuracy of about
-                87%. That's practically the right result.
+                geometry.{" "}
+                {window.innerWidth < 768 && (
+                  <>
+                    <br />
+                    <br />
+                  </>
+                )}
+                And today we get the result with an accuracy of about 87%.
+                That's practically the right result.
                 <br />
                 <br /> What do you do with this result? Our test lets you know
                 that you're on the right track to choose your soul mate!
@@ -155,16 +167,27 @@ const Home = () => {
 
         {/* <div className="container"></div> */}
       </section>
-      <section className={cn("container", s.fourthSection)}>
-        <div className={s.fourthSection__titleContainer}>
+      <section className={s.fourthSection}>
+        <div
+          className={cn(s.fourthSection__titleContainer, {
+            ["container"]: window.innerWidth < 768,
+          })}
+        >
           <h2 className={cn(s.h2, s.check)}>
             Check how similar your parents are
           </h2>
           <p className={s.mainInfo}>
             The major aspect to consider when examining parental similarities is
-            physical appearance. It is not uncommon for children to notice
-            resemblances between their parents, whether it be physical features
-            like eye color, hair texture, or even their smiles. <br />
+            physical appearance.{" "}
+            {window.innerWidth < 768 && (
+              <>
+                <br />
+                <br />
+              </>
+            )}{" "}
+            It is not uncommon for children to notice resemblances between their
+            parents, whether it be physical features like eye color, hair
+            texture, or even their smiles. <br />
             <br /> These similarities can create a sense of connection and
             belonging within the family unit, as children often find comfort in
             seeing themselves reflected in their parents.
@@ -173,7 +196,10 @@ const Home = () => {
 
         <div className={s.fourthSection__imageContainer}>
           <div className={s.bottomImage}>
-            <img src={Parents} alt="parents" />
+            <img
+              src={window.innerWidth < 768 ? ParentsMob : Parents}
+              alt="parents"
+            />
           </div>
           <Button
             className={cn(s.checkSimilarity, s.bottomBtn)}
