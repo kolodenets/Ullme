@@ -1,10 +1,9 @@
-import { useState } from "react";
 import cn from "classnames";
 import Button from "../../components/Button/Button";
-import Logo from "/assets/images/Logo.png";
+
 import Circle from "/assets/icons/Status-Normal.svg";
 import CircleWeb from "/assets/icons/Status-Normal-web.svg";
-import Percent from "/assets/icons/percent.svg";
+
 import MainImage from "/assets/images/mainImageWeb.png";
 import MainImageMob from "/assets/images/mainImageMob.png";
 import Parents from "/assets/images/parents.png";
@@ -12,9 +11,8 @@ import ParentsMob from "/assets/images/parents-mob.png";
 import SecondImage from "../../../public/assets/images/secondImageWeb.png";
 import SecondImageMobile from "../../../public/assets/images/secondImageMob.png";
 import ThirdImage from "../../../public/assets/images/image3-web.png";
+import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
 import s from "./Home.module.scss";
-import UISwiper from "../../components/Swiper/UISwiper";
-import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions.js";
 
 const Home = () => {
   const size = useWindowDimensions();
