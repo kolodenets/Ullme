@@ -6,6 +6,7 @@ import Circle from "/assets/icons/Status-Normal.svg";
 import CircleWeb from "/assets/icons/Status-Normal-web.svg";
 import Percent from "/assets/icons/percent.svg";
 import MainImage from "/assets/images/mainImageWeb.png";
+import MainImageMob from "/assets/images/mainImageMob.png";
 import Parents from "/assets/images/parents.png";
 import ParentsMob from "/assets/images/parents-mob.png";
 import SecondImage from "../../../public/assets/images/secondImageWeb.png";
@@ -29,10 +30,10 @@ const Home = () => {
               <p className={s.mainInfo}>
                 Is an artificial intelligence soft developed and trained on the
                 basis of many years of scientific research. <br />
-                {size.width > 768 && <br />}
+                <br />
                 Scientists have proven that people who look like each other are
                 attracted to each other. <br />
-                It is laid down by nature. <br /> {size.width > 768 && <br />}
+                It is laid down by nature. <br /> <br />
                 You can read more here{" "}
                 <span className={s.svg}>
                   <svg
@@ -59,7 +60,11 @@ const Home = () => {
           </div>
         </div>
         <div className={s.mainImageContainer}>
-          <img src={MainImage} alt="mainImage" className={s.mainImage} />
+          <img
+            src={size.width > 375 ? MainImage : MainImageMob}
+            alt="mainImage"
+            className={s.mainImage}
+          />
           {/* <div className={s.percentage}>
             <img src={Percent} alt="percent" className={s.percentImg} />
           </div> */}
@@ -75,7 +80,9 @@ const Home = () => {
       <section className={cn("container", s.secondSection)}>
         <div className={s.secondSection__contentContainer}>
           <div className={s.secondSection__titleContainer}>
-            <h2 className={cn(s.secondSection__title, s.h2, s.secondInfo__mobile)}>
+            <h2
+              className={cn(s.secondSection__title, s.h2, s.secondInfo__mobile)}
+            >
               When looking for love, start by looking in the mirror
             </h2>
             <div className={s.center}>
