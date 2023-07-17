@@ -155,7 +155,8 @@
 }
 .checkSimilarity {
   margin-top: 44px;
-  max-width: 301px;
+  width: 303px;
+  height: 50px;
   @include mobile-tablet {
     margin: 44px auto 0;
   }
@@ -165,6 +166,7 @@
   margin-top: 124px !important;
   @include mobile-tablet {
     margin-top: 44px !important;
+    max-width: 560px !important;
   }
 
   .secondSection__contentContainer {
@@ -188,7 +190,6 @@
 
     @include mobile-tablet {
       flex-direction: column-reverse;
-      max-width: 500px;
     }
   }
 
@@ -227,26 +228,27 @@
     
   }
 
-  .shortText {
-    @include petraRegular16;
+  // .shortText {
+  //   @include petraRegular16;
 
-    width: 100%;
-    display: -webkit-box;
-    height: 182px; 
-    -webkit-line-clamp: 8;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    overflow-y: hidden;
-    margin-bottom: 20px;
+  //   width: 100%;
+  //   display: -webkit-box;
+  //   height: 182px; 
+  //   -webkit-line-clamp: 8;
+  //   -webkit-box-orient: vertical;
+  //   text-overflow: ellipsis;
+  //   overflow-y: hidden;
+  //   margin-bottom: 20px;
 
-    @include mobile-tablet {
-      max-width: 500px;
-    }
+  //   @include mobile-tablet {
+  //     max-width: 500px;
+  //   }
 
-  }
+  // }
   .longText {
-    height: fit-content;
-    -webkit-line-clamp: unset;
+    @include petraRegular16;
+    margin-bottom: 20px;
+    width: 100%;
   }
 
   
@@ -382,23 +384,27 @@
       right: 4%;
     }
   }
-  .shortText2 {
+  // .shortText2 {
+  //   @include petraRegular16;
+
+  //   width: 100%;
+  //   display: -webkit-box;
+  //   height: 132px; 
+  //   -webkit-line-clamp: 6;
+  //   -webkit-box-orient: vertical;
+  //   text-overflow: ellipsis;
+  //   overflow-y: hidden;
+  //   margin-bottom: 20px;
+  //   color: $color-white;
+
+  // }
+  .longText2 {
     @include petraRegular16;
 
     width: 100%;
-    display: -webkit-box;
-    height: 132px; 
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    overflow-y: hidden;
     margin-bottom: 20px;
     color: $color-white;
 
-  }
-  .longText2 {
-    height: fit-content;
-    -webkit-line-clamp: unset;
   }
 }
 

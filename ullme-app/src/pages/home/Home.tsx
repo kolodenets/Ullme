@@ -13,10 +13,11 @@ import SecondImageMobile from "../../../public/assets/images/image2.png";
 import ThirdImage from "../../../public/assets/images/image3-web.png";
 import s from "./Home.module.scss";
 import UISwiper from "../../components/Swiper/UISwiper";
+import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions.js";
 
 const Home = () => {
-  const [activeLongText, setActiveLongText] = useState(false);
-  const [activeLongText2, setActiveLongText2] = useState(false);
+  const size = useWindowDimensions();
+
   return (
     <main className={s.homePageWrapper}>
       <section className={s.heroSection}>
@@ -29,10 +30,10 @@ const Home = () => {
               </h4>
               <p className={s.mainInfo}>
                 Scientists have proven that people who look like{" "}
-                {window.innerWidth > 768 && <br />} each other are attracted to
-                each other. It is laid down by nature. <br />
+                {size.width > 768 && <br />} each other are attracted to each
+                other. It is laid down by nature. <br />
                 <br /> It's time to test this statement for yourself!{" "}
-                {window.innerWidth > 768 && <br />}
+                {size.width > 768 && <br />}
                 Upload photos of your couple and find out how much you look
                 like.
               </p>
@@ -69,22 +70,17 @@ const Home = () => {
             </div>
             <div className={s.secondImage}>
               <img
-                src={window.innerWidth < 768 ? SecondImageMobile : SecondImage}
+                src={size.width < 768 ? SecondImageMobile : SecondImage}
                 alt="second-image"
               />
             </div>
           </div>
 
           <div
-            className={cn(
-              s.shortText,
-              { [s.longText]: window.innerWidth < 768 && activeLongText },
-              {
-                [s.regularText]: window.innerWidth > 768,
-                ["container"]: window.innerWidth < 768,
-              }
-            )}
-            onClick={() => setActiveLongText(!activeLongText)}
+            className={cn(s.longText, {
+              [s.regularText]: size.width > 768,
+              ["container"]: size.width < 768,
+            })}
           >
             <span>
               Married couples often do not notice that they resemble each other.
@@ -126,18 +122,16 @@ const Home = () => {
               </div>
             </div>
             <div
-              className={cn(s.shortText2, {
-                [s.longText2]: activeLongText2,
-                [s.regularText]: window.innerWidth > 768,
-                // ["container"]: window.innerWidth < 768,
+              className={cn(s.longText2, {
+                [s.regularText]: size.width > 768,
+                // ["container"]: size.width < 768,
               })}
-              onClick={() => setActiveLongText2(!activeLongText2)}
             >
               <span>
                 Our algorithm analyzes your faces according to a variety of
                 parameters and creates a special mask to compare facial
                 geometry.{" "}
-                {window.innerWidth < 768 && (
+                {size.width < 768 && (
                   <>
                     <br />
                     <br />
@@ -167,12 +161,14 @@ const Home = () => {
 
         {/* <div className="container"></div> */}
       </section>
-      <section className={cn(s.fourthSection, {
-            ["container"]: window.innerWidth > 768,
-          })}>
+      <section
+        className={cn(s.fourthSection, {
+          ["container"]: size.width > 768,
+        })}
+      >
         <div
           className={cn(s.fourthSection__titleContainer, {
-            ["container"]: window.innerWidth < 768,
+            ["container"]: size.width < 768,
           })}
         >
           <h2 className={cn(s.h2, s.check)}>
@@ -181,7 +177,7 @@ const Home = () => {
           <p className={s.mainInfo}>
             The major aspect to consider when examining parental similarities is
             physical appearance.{" "}
-            {window.innerWidth < 768 && (
+            {size.width < 768 && (
               <>
                 <br />
                 <br />
@@ -198,10 +194,7 @@ const Home = () => {
 
         <div className={s.fourthSection__imageContainer}>
           <div className={s.bottomImage}>
-            <img
-              src={window.innerWidth < 768 ? ParentsMob : Parents}
-              alt="parents"
-            />
+            <img src={size.width < 768 ? ParentsMob : Parents} alt="parents" />
           </div>
           <Button
             className={cn(s.checkSimilarity, s.bottomBtn)}
