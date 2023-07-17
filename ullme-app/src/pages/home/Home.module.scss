@@ -11,7 +11,7 @@
 .heroSection {
   display: flex;
   margin-top: 48px;
-  margin-bottom: 102px;
+  margin-bottom: 151px;
   // margin-left: 5%;
   // padding-top: 86px !important;
   // padding-bottom: 44px !important;
@@ -33,12 +33,16 @@
   }
 
   .heroContainer {
-    max-width: 1200px;
+    max-width: 1203px;
     margin: 0 auto;
     padding: 0 15px;
     display: flex;
     align-items: center;
     flex: 0 0 100%;
+
+    button {
+      margin-top: 64px;
+    }
 
     @include mobile-tablet {
       justify-content: center;
@@ -66,10 +70,10 @@
     flex: 0 0 calc(((100vw - 30px) * 0.56) + 15px);
     transform: translate(-97.3%, 0);
     position: relative;
-    padding: 0 0 52.8% 0;
+    padding: 0 0 45.2% 0;
 
     @include desktop {
-      flex: 0 0 calc(100vw - (((100vw - 1200px) / 2) + (1170px * 0.41) + 15px));
+      flex: 0 0 calc(100vw - (((100vw - 1203px) / 2) + (1170px * 0.41) + 35px));
     }
 
     @include mobile-tablet {
@@ -85,31 +89,31 @@
       height: 100%;
       top: 0;
       left: 0;
-      object-fit: cover;
+      // object-fit: cover;
     }
 
     @include mobile-tablet {
       height: 252px;
     }
 
-  .percentage {
-    position: absolute;
-    bottom: -45px;
-    left: calc(41% - 73px);
+  // .percentage {
+  //   position: absolute;
+  //   bottom: -45px;
+  //   left: calc(41% - 73px);
 
-    @include mobile-tablet {
-      left: calc(50% - 67px);
-    }
+  //   @include mobile-tablet {
+  //     left: calc(50% - 67px);
+  //   }
 
-    .percentImg {
-      width: 270px;
-      height: 153px;
-      @include mobile-tablet {
-        width: unset;
-        height: unset;
-      }
-    }
-  }
+  //   .percentImg {
+  //     width: 270px;
+  //     height: 153px;
+  //     @include mobile-tablet {
+  //       width: unset;
+  //       height: unset;
+  //     }
+  //   }
+  // }
 }
 
 // .heroContainer {
@@ -122,23 +126,21 @@
   .mainTitle {
     @include h1;
     color: $color-red;
-    margin-bottom: 18px;
+    margin-bottom: 24px;
 
     @include mobile-tablet {
-      margin-bottom: 12px;
-      margin-top: 61px;
+      margin-top: 64px;
     }
   }
   .mainSubtitle {
     @include petraRegular16;
       font-weight: $fw-semibold;
       font-size: 30px;
-      margin-bottom: 24px;
+      margin-bottom: 44px;
       line-height: 105%;
 
     @include mobile-tablet {
-      font-size: 16px;
-      margin-bottom: 20px;
+      font-size: 20px;
     }
   }
 
@@ -161,9 +163,37 @@
     margin: 44px auto 0;
   }
 }
+.svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.textblock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 160px;
+  background-color: $color-blue-gray;
+  @include petraRegular16;
+  font-size: 24px;
+  text-transform: uppercase;
+  text-align: center;
+
+  @include mobile-tablet {
+    width: 323px !important;
+    height: 166px !important;
+  }
+  .whiteText {
+    width: 511px;
+    color: $color-white;
+  }
+  .yellowText {
+    color: $color-yellow;
+  }
+}
 
 .secondSection {
-  margin-top: 124px !important;
+  margin-top: 92px !important;
   @include mobile-tablet {
     margin-top: 44px !important;
     max-width: 560px !important;
@@ -171,9 +201,10 @@
 
   .secondSection__contentContainer {
     display: flex;
+    flex-direction: column;
     gap: 30px;
     align-items: flex-end;
-    margin-bottom: 56px;
+    margin-bottom: 41px;
 
     @include mobile-tablet {
       flex-direction: column;
@@ -181,20 +212,24 @@
     }
   }
   .secondSection__imageWrapper {
-    max-width: 670px;
+    display: flex;
+    gap: 30px;
   }
 
   .secondSection__titleContainer {
     display: flex;
-    flex-direction: column;
+    gap: 30px;
+    align-items: end;
 
     @include mobile-tablet {
       flex-direction: column-reverse;
     }
   }
+  .secondSection__title {
+    max-width: 670px;
+  }
 
   .center {
-    margin-top: 24px;
     max-width: 470px;
 
     @include mobile-tablet {
@@ -219,7 +254,6 @@
   .secondImage {
     max-width: 670px;
     height: 394px;
-    margin-top: 44px;
     @include mobile-tablet {
       display: flex;
       justify-content: center;
@@ -260,10 +294,11 @@
 
   .phraseContainer {
     margin: 106px auto;
-    max-width: 748px;
+    max-width: 1095px;
     @include petraRegular16;
     text-align: center;
     font-size: 30px;
+    font-weight: $fw-semibold;
     @include mobile-tablet {
       max-width: 560px;
       margin: 0 auto;
@@ -285,7 +320,7 @@
 .thirdSection {
   width: 100vw;
   background-color: $color-blue-gray;
-  padding-bottom: 201px;
+  padding-bottom: 72px;
 
   @include mobile-tablet {
     padding-bottom: 44px;
@@ -294,8 +329,9 @@
   .thirdSection__contentContainer {
     display: flex;
     flex-direction: row;
+    align-items: start;
     gap: 30px;
-    padding-top: 80px;
+    padding-top: 68px;
 
     @include mobile-tablet {
       display: flex;
@@ -323,7 +359,7 @@
   }
 
   .likeness {
-    margin: 52px 0 24px;
+    margin-bottom: 24px;
     color: $color-white;
     text-align: left;
 
@@ -347,7 +383,6 @@
 
   .bigRevativeImage {
       position: relative;
-      height: 698px;
       max-width: 670px;
       // background-image: url('/assets/images/image3-web.png');
       // background-position: center;
@@ -358,8 +393,8 @@
       }
       .bigAbsolut {
         position: absolute;
-        top: 93%;
-        right: 5%;
+        top: 72%;
+        right: 2%;
       }
   }
 
@@ -409,8 +444,8 @@
 }
 
 .fourthSection {
-  padding-top: 56px !important;
-  padding-bottom: 56px !important;
+  padding-top: 172px !important;
+  padding-bottom: 147px !important;
   flex-direction: row-reverse !important;
   gap: 30px;
   align-items: flex-start !important;
@@ -458,7 +493,7 @@
     }
   }
   .bottomBtn {
-    margin-top: 12px;
+    margin-top: 36px;
     @include mobile-tablet {
       margin: 44px auto 0;
     }
