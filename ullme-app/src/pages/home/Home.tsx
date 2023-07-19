@@ -3,14 +3,14 @@ import Button from "../../components/Button/Button";
 
 import Circle from "/assets/icons/Status-Normal.svg";
 import CircleWeb from "/assets/icons/Status-Normal-web.svg";
+import Photo from "/assets/icons/photo.svg";
+import PhotoMob from "/assets/icons/photoMob.svg";
+import ThirdImage from "/assets/icons/thirdImage.svg";
+import Parents from "/assets/icons/parents.svg";
 
-import MainImage from "/assets/images/mainImageWeb.png";
-import MainImageMob from "/assets/images/mainImageMob.png";
-import Parents from "/assets/images/parents.png";
-import ParentsMob from "/assets/images/parents-mob.png";
-import SecondImage from "../../../public/assets/images/secondImageWeb.png";
-import SecondImageMobile from "../../../public/assets/images/secondImageMob.png";
-import ThirdImage from "../../../public/assets/images/image3-web.png";
+import MainImage from "/assets/icons/mainImage.svg";
+
+
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
 import s from "./Home.module.scss";
 
@@ -42,7 +42,7 @@ const Home = () => {
                     fill="none"
                   >
                     <path
-                      d="M20.8125 20.25C20.8125 20.3992 20.7532 20.5423 20.6477 20.6477C20.5423 20.7532 20.3992 20.8125 20.25 20.8125H3.75C3.60082 20.8125 3.45774 20.7532 3.35225 20.6477C3.24676 20.5423 3.1875 20.3992 3.1875 20.25C3.1875 20.1008 3.24676 19.9577 3.35225 19.8523C3.45774 19.7468 3.60082 19.6875 3.75 19.6875H20.25C20.3992 19.6875 20.5423 19.7468 20.6477 19.8523C20.7532 19.9577 20.8125 20.1008 20.8125 20.25ZM7.5 16.3125C7.64913 16.3124 7.79211 16.253 7.8975 16.1475L17.4375 6.60844V14.25C17.4375 14.3992 17.4968 14.5423 17.6023 14.6477C17.7077 14.7532 17.8508 14.8125 18 14.8125C18.1492 14.8125 18.2923 14.7532 18.3977 14.6477C18.5032 14.5423 18.5625 14.3992 18.5625 14.25V5.25C18.5625 5.10082 18.5032 4.95774 18.3977 4.85225C18.2923 4.74676 18.1492 4.6875 18 4.6875H9C8.85082 4.6875 8.70774 4.74676 8.60225 4.85225C8.49676 4.95774 8.4375 5.10082 8.4375 5.25C8.4375 5.39918 8.49676 5.54226 8.60225 5.64775C8.70774 5.75324 8.85082 5.8125 9 5.8125H16.6416L7.1025 15.3525C7.02393 15.4312 6.97044 15.5313 6.94878 15.6404C6.92711 15.7494 6.93825 15.8625 6.98078 15.9652C7.02332 16.0679 7.09534 16.1557 7.18775 16.2175C7.28016 16.2794 7.38882 16.3124 7.5 16.3125Z"
+                      d="M7.5 11.4375H16.5C16.6492 11.4375 16.7923 11.4968 16.8977 11.6023C17.0032 11.7077 17.0625 11.8508 17.0625 12C17.0625 12.1492 17.0032 12.2923 16.8977 12.3977C16.7923 12.5032 16.6492 12.5625 16.5 12.5625H7.5C7.35082 12.5625 7.20774 12.5032 7.10225 12.3977C6.99676 12.2923 6.9375 12.1492 6.9375 12C6.9375 11.8508 6.99676 11.7077 7.10225 11.6023C7.20774 11.4968 7.35082 11.4375 7.5 11.4375ZM9.75 15.9375H6C4.95571 15.9375 3.95419 15.5227 3.21577 14.7842C2.47734 14.0458 2.0625 13.0443 2.0625 12C2.0625 10.9557 2.47734 9.95419 3.21577 9.21577C3.95419 8.47734 4.95571 8.0625 6 8.0625H9.75C9.89918 8.0625 10.0423 8.00324 10.1477 7.89775C10.2532 7.79226 10.3125 7.64918 10.3125 7.5C10.3125 7.35082 10.2532 7.20774 10.1477 7.10225C10.0423 6.99676 9.89918 6.9375 9.75 6.9375H6C4.65734 6.9375 3.36967 7.47087 2.42027 8.42027C1.47087 9.36967 0.9375 10.6573 0.9375 12C0.9375 13.3427 1.47087 14.6303 2.42027 15.5797C3.36967 16.5291 4.65734 17.0625 6 17.0625H9.75C9.89918 17.0625 10.0423 17.0032 10.1477 16.8977C10.2532 16.7923 10.3125 16.6492 10.3125 16.5C10.3125 16.3508 10.2532 16.2077 10.1477 16.1023C10.0423 15.9968 9.89918 15.9375 9.75 15.9375ZM18 6.9375H14.25C14.1008 6.9375 13.9577 6.99676 13.8523 7.10225C13.7468 7.20774 13.6875 7.35082 13.6875 7.5C13.6875 7.64918 13.7468 7.79226 13.8523 7.89775C13.9577 8.00324 14.1008 8.0625 14.25 8.0625H18C19.0443 8.0625 20.0458 8.47734 20.7842 9.21577C21.5227 9.95419 21.9375 10.9557 21.9375 12C21.9375 13.0443 21.5227 14.0458 20.7842 14.7842C20.0458 15.5227 19.0443 15.9375 18 15.9375H14.25C14.1008 15.9375 13.9577 15.9968 13.8523 16.1023C13.7468 16.2077 13.6875 16.3508 13.6875 16.5C13.6875 16.6492 13.7468 16.7923 13.8523 16.8977C13.9577 17.0032 14.1008 17.0625 14.25 17.0625H18C19.3427 17.0625 20.6303 16.5291 21.5797 15.5797C22.5291 14.6303 23.0625 13.3427 23.0625 12C23.0625 10.6573 22.5291 9.36967 21.5797 8.42027C20.6303 7.47087 19.3427 6.9375 18 6.9375Z"
                       fill="#1890FF"
                     />
                   </svg>
@@ -58,11 +58,7 @@ const Home = () => {
           </div>
         </div>
         <div className={s.mainImageContainer}>
-          <img
-            src={size.width > 375 ? MainImage : MainImageMob}
-            alt="mainImage"
-            className={s.mainImage}
-          />
+          <img src={MainImage} alt="mainImage" className={s.mainImage} />
           {/* <div className={s.percentage}>
             <img src={Percent} alt="percent" className={s.percentImg} />
           </div> */}
@@ -85,16 +81,17 @@ const Home = () => {
             </h2>
             <div className={s.center}>
               <p className={s.secondInfo}>
-                Why Do So Many Couples Look Alike? Here’s the Psychology Behind
-                the Weird Phenomenon
+                Why Do So Many Couples Look Alike? <br /> Here’s the Psychology
+                Behind the Weird Phenomenon
               </p>
             </div>
           </div>
           <div className={s.secondSection__imageWrapper}>
             <div className={s.secondImage}>
               <img
-                src={size.width < 768 ? SecondImageMobile : SecondImage}
+                src={size.width < 500 ? PhotoMob : Photo}
                 alt="second-image"
+                className={s.secondImg}
               />
             </div>
             <div
@@ -171,7 +168,7 @@ const Home = () => {
             </Button>
           </div>
           <div className={s.bigRevativeImage}>
-            <img src={ThirdImage} alt="image" />
+            <img src={ThirdImage} alt="image" className={s.image3} />
             <div className={s.bigAbsolut}>
               <img src={CircleWeb} alt="status" />
             </div>
@@ -209,19 +206,31 @@ const Home = () => {
             belonging within the family unit, as children often find comfort in
             seeing themselves reflected in their parents.
           </p>
+          {size.width > 768 && (
+            <Button
+              className={cn(s.checkSimilarity, s.bottomBtn)}
+              onClick={() => console.log("click")}
+            >
+              Check similarity
+            </Button>
+          )}
         </div>
 
-        <div className={s.fourthSection__imageContainer}>
-          <div className={s.bottomImage}>
-            <img src={size.width < 768 ? ParentsMob : Parents} alt="parents" />
-          </div>
+        <div className={s.bottomImage}>
+          <img
+            src={Parents}
+            alt="parents"
+            className={s.bottomImg}
+          />
+        </div>
+        {size.width <= 768 && (
           <Button
             className={cn(s.checkSimilarity, s.bottomBtn)}
             onClick={() => console.log("click")}
           >
             Check similarity
           </Button>
-        </div>
+        )}
       </section>
     </main>
   );

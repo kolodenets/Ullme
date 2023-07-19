@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar";
 
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions.js";
 import MainLogo from "../../../public/assets/icons/ullme-web.svg";
-import MainLogoMob from "../../../public/assets/icons/ullme-white.svg";
+import MainLogoMob from "../../../public/assets/icons/ullme-mob.svg";
 
 import s from "./Header.module.scss";
 
