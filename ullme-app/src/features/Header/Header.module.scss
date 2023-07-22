@@ -1,10 +1,9 @@
 @use '../../styles/style.scss' as *;
 
 .header {
-  padding-top: 14px;
   @include mobile-tablet {
     position: fixed;
-    padding-top: 6px;
+    padding-top: 15px;
     top: 0;
     left: 0;
     width: 100%;
@@ -22,6 +21,7 @@
   z-index: 20;
 
   img {
+    cursor: pointer;
     @include mobile-tablet {
       padding-left: 14px;
     }
@@ -39,4 +39,36 @@
   @include mobile-tablet {
     display: block;
   }
+}
+
+
+.navbar {
+  display: flex;
+  gap: 120px;
+  padding-right: 218px;
+  @media screen and (width < 1000px) {
+    padding-right: 118px;
+    gap: 60px;
+  }
+  @include mobile-tablet {
+    display: none;
+  }
+}
+.navbar__menu {
+  display: flex;
+  gap: 20px;
+}
+.navbar__languages {
+  display: flex;
+}
+
+.navbar__menu_item {
+  @include petraRegular16;
+  font-size: 20px;
+  font-weight: $fw-medium;
+  padding: 12px;
+  cursor: pointer;
+}
+.active {
+  font-weight: $fw-semibold;
 }

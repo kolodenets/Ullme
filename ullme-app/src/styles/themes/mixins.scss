@@ -6,7 +6,7 @@
   font-weight: $fw-semibold;
 
   @include mobile-tablet {
-    font-size: 48px;
+    font-size: 64px;
   }
 }
 @mixin h2 {

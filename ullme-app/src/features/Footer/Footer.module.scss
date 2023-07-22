@@ -3,13 +3,45 @@
 .footer{
   background-color: $color-blue-gray;
   width: 100vw;
-  padding: 40px 0;
+  .icon {
+    display: flex;
+    align-items: center;
+  }
+}
+.footerContent {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  padding: 33px 15px;
 
+  @include mobile-tablet {
+    flex-direction: column;
+    gap: 24px;
+    max-width: 272px;
+    padding: 20px 15px;
+  }
 }
 
-.footerContent {
-  margin: 0 auto;
+.footerIcons {
   display: flex;
   width: 184px;
   gap: 44px;
+
+  @include mobile-tablet {
+
+  }
+}
+.rights {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 300px;
+
+
+  font-family: Rising Sun;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 105%;
 }

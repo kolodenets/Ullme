@@ -8,7 +8,11 @@ import "./pagination.scss";
 import s from "./UISwiper.module.scss";
 import cn from "classnames";
 
+import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions.js";
+
 const UISwiper = () => {
+  const size = useWindowDimensions();
+
   return (
     <>
       <Swiper
@@ -16,8 +20,8 @@ const UISwiper = () => {
         modules={[Pagination]}
         slidesPerView={"auto"}
         centeredSlides={true}
-        spaceBetween={window.innerWidth < 768 ? 8 : 12}
-        loop={true}
+        spaceBetween={size.width < 768 ? 8 : 12}
+        loop={size.width < 768}
         pagination={{ clickable: true }}
         // className="mySwiper"
       >

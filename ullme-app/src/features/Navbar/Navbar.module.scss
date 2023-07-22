@@ -2,13 +2,28 @@
 
 
 .navbar {
+  display: flex;
+  gap: 120px;
+  padding-right: 136px;
   @include mobile-tablet {
     display: none;
   }
 }
+.navbar__menu {
+  display: flex;
+  gap: 20px;
+}
+.navbar__languages {
+  display: flex;
+}
 
 .navbar__menu_item {
   @include petraRegular16;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: $fw-medium;
+  padding: 12px;
+  cursor: pointer;
+}
+.active {
+  font-weight: $fw-semibold;
 }

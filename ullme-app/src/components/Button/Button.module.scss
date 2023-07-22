@@ -2,8 +2,8 @@
 
 .button {
   display: flex;
-  padding: 8px 65px;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   background-color: $color-red;
   border-radius: 8px;
   color: $color-white;
