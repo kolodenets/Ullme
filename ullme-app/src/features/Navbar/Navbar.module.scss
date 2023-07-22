@@ -3,7 +3,8 @@
 
 .navbar {
   display: flex;
-  gap: 20px;
+  gap: 120px;
+  padding-right: 136px;
   @include mobile-tablet {
     display: none;
   }
@@ -18,11 +19,11 @@
 
 .navbar__menu_item {
   @include petraRegular16;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: $fw-medium;
-  padding: 12px 40px;
+  padding: 12px;
   cursor: pointer;
 }
 .active {
-  font-weight: 600;
+  font-weight: $fw-semibold;
 }

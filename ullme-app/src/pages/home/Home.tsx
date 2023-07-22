@@ -32,7 +32,7 @@ const Home = () => {
                 Scientists have proven that people who look like each other are
                 attracted to each other. <br />
                 It is laid down by nature. <br /> <br />
-                You can read more here{" "}
+                You can read more here
                 <span className={s.svg}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
