@@ -7,15 +7,18 @@ import Photo from "/assets/icons/photo.svg";
 import PhotoMob from "/assets/icons/photoMob.svg";
 import ThirdImage from "/assets/icons/thirdImage.svg";
 import Parents from "/assets/icons/parents.svg";
+import Popup from "../../components/Popup/Popup";
 
 import MainImage from "/assets/icons/mainImage.svg";
 
-
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
 import s from "./Home.module.scss";
+import { useState } from "react";
 
 const Home = () => {
   const size = useWindowDimensions();
+
+  const [isPopupOPen, setIsPopupOpen] = useState<boolean>(false);
 
   return (
     <main className={s.homePageWrapper}>
@@ -33,7 +36,11 @@ const Home = () => {
                 attracted to each other. <br />
                 It is laid down by nature. <br /> <br />
                 You can read more here
-                <span className={s.svg}>
+                <span
+                  className={s.svg}
+                  role="button"
+                  onClick={() => setIsPopupOpen(true)}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -54,6 +61,9 @@ const Home = () => {
               >
                 Check similarity
               </Button>
+              <div className={s.mainImageContainerAbsolut}>
+                <img src={MainImage} alt="mainImage" />
+              </div>
             </div>
           </div>
         </div>
@@ -217,11 +227,7 @@ const Home = () => {
         </div>
 
         <div className={s.bottomImage}>
-          <img
-            src={Parents}
-            alt="parents"
-            className={s.bottomImg}
-          />
+          <img src={Parents} alt="parents" className={s.bottomImg} />
         </div>
         {size.width <= 768 && (
           <Button
@@ -232,6 +238,39 @@ const Home = () => {
           </Button>
         )}
       </section>
+      <Popup active={isPopupOPen} onClose={() => setIsPopupOpen(false)}>
+        <div className={s.popup}>
+          <h1 className={s.popup__title}>ULLME</h1>
+          <h4 className={s.popup__subtitle}>AI service knows the answer!</h4>
+          <div className={s.popup__list}>
+            <a
+              href="https://www.sciencedirect.com/science/article/abs/pii/S109051382300051X?via%3Dihub"
+              target="_blank"
+              className={s.link}
+            >
+              Objectively measured facial traits predict in-person evaluations
+              of facial attractiveness and prosociality in speed-dating partners
+            </a>
+
+            <a
+              href="https://socialscience.msu.edu/news-events/news/archives/2021/2021-08-03.html"
+              target="_blank"
+              className={s.link}
+            >
+              More than just a "type" - new research shows people tend to choose
+              partners similar to their exes or parents
+            </a>
+
+            <a
+              href="https://www.psychologytoday.com/intl/blog/close-encounters/201812/why-do-we-people-who-are-similar-us"
+              target="_blank"
+              className={s.link}
+            >
+              Why Do We Like People Who Are Similar to Us?
+            </a>
+          </div>
+        </div>
+      </Popup>
     </main>
   );
 };

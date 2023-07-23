@@ -46,6 +46,7 @@
   }
 
   .heroBody {
+    position: relative;
     width: 41%;
 
     @include mobile-tablet {
@@ -54,25 +55,17 @@
     }
   }
   .mainImageContainer {
-    // position: relative;
-    // height: 760px;
-    // width: 805px;
-    // max-width: 805px;
-    // background-image: url('/assets/images/image1-web.png');
-    // background-position: center;
-    // background-repeat: no-repeat;
-    // background-size: cover;
-
     flex: 0 0 calc(((100vw - 30px) * 0.56) + 15px);
     transform: translate(-97.3%, 0);
     position: relative;
     padding: 0 0 45.2% 0;
 
-    @include desktop {
-      flex: none;
-      height: 650px;
-      width: 805px;
-      padding: 0;
+    @media screen and (width > 1440px) {
+      display: none;
+      // flex: none;
+      // height: 650px;
+      // width: 805px;
+      // padding: 0;
     }
 
     @include mobile-tablet {
@@ -97,33 +90,21 @@
     @include mobile-tablet {
       height: 252px;
     }
-
-    // .percentage {
-    //   position: absolute;
-    //   bottom: -45px;
-    //   left: calc(41% - 73px);
-
-    //   @include mobile-tablet {
-    //     left: calc(50% - 67px);
-    //   }
-
-    //   .percentImg {
-    //     width: 270px;
-    //     height: 153px;
-    //     @include mobile-tablet {
-    //       width: unset;
-    //       height: unset;
-    //     }
-    //   }
-    // }
   }
 
-  // .heroContainer {
-  //   @include laptop-desktop {
-  //     max-width: 470px;
-  //   }
-
-  // }
+  .mainImageContainerAbsolut {
+    position: absolute;
+    top: 0;
+    left: 450px;
+    width: 805px;
+    height: 650px;
+    @media screen and (width < 1440px) {
+      display: none;
+    }
+    image {
+      object-fit: cover
+    }
+  }
 
   .mainTitle {
     @include h1;
@@ -583,6 +564,39 @@
     margin-top: 24px;
     @include mobile-tablet {
       margin: 44px auto 0;
+    }
+  }
+}
+
+.popup {
+  .popup__title {
+    @include h1;
+    color: $color-red;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .popup__subtitle {
+    @include petraRegular16;
+    font-weight: $fw-semibold;
+    font-size: 30px;
+    line-height: 105%;
+    text-align: center;
+    margin-bottom: 44px;
+  }
+
+  .popup__list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 15px;
+
+    & a {
+      @include petraRegular16;
+      color: $color-blue;
+      &:hover {
+        color: $color-black-15;
+      }
     }
   }
 }
