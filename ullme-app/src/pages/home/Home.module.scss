@@ -49,6 +49,10 @@
     position: relative;
     width: 41%;
 
+    @media screen and (width > 1440px) {
+      padding-top: 171px;
+    }
+
     @include mobile-tablet {
       width: unset;
       max-width: 500px;
@@ -95,14 +99,16 @@
   .mainImageContainerAbsolut {
     position: absolute;
     top: 0;
-    left: 450px;
+    left: 522px;
     width: 805px;
     height: 650px;
-    @media screen and (width < 1440px) {
+    @media screen and (width <= 1440px) {
       display: none;
     }
-    image {
-      object-fit: cover
+    img {
+      width: 805px;
+      height: 650px;
+      object-fit: cover;
     }
   }
 
