@@ -1,4 +1,4 @@
-@use '../../styles/style.scss' as *;
+@use "../../styles/style.scss" as *;
 
 .header {
   @include mobile-tablet {
@@ -10,7 +10,6 @@
     z-index: 5;
     margin: 0 auto;
   }
-  
 }
 
 .flexContainer {
@@ -26,21 +25,20 @@
       padding-left: 14px;
     }
   }
-  
 }
 
 .burgerButton {
   display: none;
-  background: url('../../../public/assets/icons/burger.svg');
+  background: url("../../../public/assets/icons/burger.svg");
   background-position: center;
   background-repeat: no-repeat;
   width: 24px;
   height: 24px;
+  cursor: pointer;
   @include mobile-tablet {
     display: block;
   }
 }
-
 
 .navbar {
   display: flex;
@@ -65,10 +63,82 @@
 .navbar__menu_item {
   @include petraRegular16;
   font-size: 20px;
-  font-weight: $fw-medium;
   padding: 12px;
   cursor: pointer;
 }
 .active {
   font-weight: $fw-semibold;
+}
+
+.burgerMenu {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  // -webkit-box-pack: center;
+  // -ms-flex-pack: center;
+  // justify-content: center;
+  background-color: $color-white;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
+  z-index: 50;
+}
+.activeBurgerMenu {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.burgerContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 345px;
+  margin: 0 auto;
+  padding-top: 15px;
+}
+
+.closeBurgerBtn {
+  align-self: flex-end;
+  margin-bottom: 18px;
+  img {
+    cursor: pointer;
+  }
+}
+
+.burgerTitle {
+  @include h1;
+  color: $color-red;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.burgerSubtitle {
+  @include petraRegular16;
+  font-weight: $fw-semibold;
+  font-size: 20px;
+  margin-bottom: 36px;
+  line-height: 105%;
+  text-align: center;
+}
+
+.burgerMenu__languages {
+  display: flex;
+  align-self: center;
+  margin-bottom: 20px;
+}
+.burgerMenu__languages_item {
+  padding: 12px 16px;
+}
+
+.burgerMenu__links {
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
