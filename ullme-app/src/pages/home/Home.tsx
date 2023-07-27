@@ -1,4 +1,5 @@
 import cn from "classnames";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 
 import Circle from "/assets/icons/Status-Normal.svg";
@@ -17,6 +18,8 @@ import { useState } from "react";
 
 const Home = () => {
   const size = useWindowDimensions();
+
+  const navigate = useNavigate();
 
   const [isPopupOPen, setIsPopupOpen] = useState<boolean>(false);
 
@@ -57,7 +60,7 @@ const Home = () => {
               </p>
               <Button
                 className={s.checkSimilarity}
-                onClick={() => console.log("click")}
+                onClick={() => navigate('/upload')}
               >
                 Check similarity
               </Button>
@@ -172,7 +175,7 @@ const Home = () => {
             </div>
             <Button
               className={s.checkSimilarity}
-              onClick={() => console.log("click")}
+              onClick={() => navigate('/upload')}
             >
               Check similarity
             </Button>
@@ -219,7 +222,7 @@ const Home = () => {
           {size.width > 768 && (
             <Button
               className={cn(s.checkSimilarity, s.bottomBtn)}
-              onClick={() => console.log("click")}
+              onClick={() => navigate('/upload')}
             >
               Check similarity
             </Button>
@@ -232,7 +235,7 @@ const Home = () => {
         {size.width <= 768 && (
           <Button
             className={cn(s.checkSimilarity, s.bottomBtn)}
-            onClick={() => console.log("click")}
+            onClick={() => navigate('/upload')}
           >
             Check similarity
           </Button>
