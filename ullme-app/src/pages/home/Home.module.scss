@@ -105,7 +105,7 @@
     @media screen and (width <= 1440px) {
       display: none;
     }
-    
+
     img {
       width: 805px;
       height: 650px;
@@ -576,11 +576,19 @@
 }
 
 .popup {
+  max-width: 494px;
+  margin: 68px 220px;
   .popup__title {
     @include h1;
     color: $color-red;
-    text-align: center;
     margin-bottom: 24px;
+    @include mobile-tablet {
+      text-align: center;
+    }
+  }
+  @include mobile-tablet {
+    margin: 0 auto;
+    padding: 58px 8px 28px;
   }
 
   .popup__subtitle {
@@ -588,15 +596,16 @@
     font-weight: $fw-semibold;
     font-size: 30px;
     line-height: 105%;
-    text-align: center;
     margin-bottom: 44px;
+    @include mobile-tablet {
+      text-align: center;
+    }
   }
 
   .popup__list {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 0 15px;
 
     & a {
       @include petraRegular16;
