@@ -80,7 +80,7 @@ const Home = () => {
       <div className={s.textblock}>
         <p className={s.whiteText}>
           Checking the similarity by{" "}
-          <span className={s.yellowText}>123 points</span> of facial geometry
+          <span className={s.yellowText}>512 points</span> of facial geometry
           with AI
         </p>
       </div>

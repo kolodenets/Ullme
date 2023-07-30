@@ -1,12 +1,16 @@
-import s from "./Footer.module.scss";
 import Instagram from "../../../public/assets/icons/InstagramLogo.svg";
+import { useLocation } from "react-router-dom";
+import cn from "classnames";
 import Twitter from "../../../public/assets/icons/TwitterLogo.svg";
 import Facebook from "../../../public/assets/icons/fi_facebook.svg";
+import s from "./Footer.module.scss";
 
 const Footer = () => {
   const year = new Date().getFullYear();
+  const location = useLocation();
+  console.log(location)
   return (
-    <footer className={s.footer}>
+    <footer className={cn(s.footer, {[s.hidden]: location.pathname !== '/'})}>
       <div className={s.footerContent}>
         <div className={s.footerIcons}>
           <img src={Instagram} alt="instagram" />
