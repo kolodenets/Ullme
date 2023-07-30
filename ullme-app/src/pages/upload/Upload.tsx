@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import cn from "classnames";
+import { useNavigate } from "react-router-dom";
 
 import Camera from "../../../public/assets/icons/cameraIcon.svg";
 import CameraBig from "../../../public/assets/icons/Camera120.svg";
@@ -10,20 +11,35 @@ import CheckboxChecked32 from "../../../public/assets/icons/checkbox-checked32.s
 import { uploadPhoto } from "../../shared/api/upload";
 import Button from "../../components/Button/Button";
 import { convertFile } from "../../shared/helpers/convertFile";
-import s from "./Upload.module.scss";
+import Popup from "../../components/Popup/Popup";
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
+import s from "./Upload.module.scss";
 
 const UploadPage = () => {
   const [error1, setError1] = useState(false);
-  const [photo1, setPhoto1] = useState(false);
+  const [photo1, setPhoto1] = useState(true);
   const [error2, setError2] = useState(false);
-  const [photo2, setPhoto2] = useState(false);
+  const [photo2, setPhoto2] = useState(true);
   const [isDisabled, setIsDisabled] = useState(true);
-  const [policyChecked, setPolicyChecked] = useState(false);
+  const [policyChecked, setPolicyChecked] = useState(true);
   const [uploadedPhoto1, setUploadedPhoto1] = useState<File | null>(null);
   const [uploadedPhoto2, setUploadedPhoto2] = useState<File | null>(null);
 
+  const [openLimitPopup, setOpenLimitPopup] = useState(false);
+  const [openSignUpPopup, setOpenSignUpPopup] = useState(false);
+
+  const navigate = useNavigate();
+
   const size = useWindowDimensions();
+
+  const handleSignupClick = () => {
+    setOpenLimitPopup(false);
+    setOpenSignUpPopup(true);
+  };
+
+  const handleSignup = () => {
+    console.log('')
+  }
 
   useEffect(() => {
     if (photo1 && photo2 && policyChecked) {
@@ -86,6 +102,7 @@ const UploadPage = () => {
                             "photo1",
                             convertFile(e.target.files![0])
                           );
+                          localStorage.setItem("token1", result.data.token);
                         }
                       });
                     }
@@ -138,6 +155,7 @@ const UploadPage = () => {
                             "photo2",
                             convertFile(e.target.files![0])
                           );
+                          localStorage.setItem("token2", result.data.token);
                         }
                       });
                     }
@@ -187,12 +205,42 @@ const UploadPage = () => {
             className={s.checkSimilarity}
             disabled={isDisabled}
             onClick={() => {
-              console.log("");
+              const tryNumber = Number(localStorage.getItem("tryNumber")) ?? 1;
+              if (tryNumber < 3) {
+                navigate("/result");
+                localStorage.setItem("tryNumber", `${tryNumber + 1}`);
+              } else {
+                setOpenLimitPopup(true);
+              }
             }}
           >
             Check similarity
           </Button>
         </div>
+        <Popup active={openLimitPopup} onClose={() => setOpenLimitPopup(false)}>
+          <div className={s.popup}>
+            <h1 className={s.popup__title}>Limit exhausted</h1>
+            <div className={s.popup__list}>
+              You have reached the limit of comparisons, please register and
+              purchase a paid subscription.
+            </div>
+            <Button className={s.signUp} onClick={handleSignupClick}>
+              Sign Up
+            </Button>
+          </div>
+        </Popup>
+        <Popup active={openSignUpPopup} onClose={() => setOpenSignUpPopup(false)}>
+          <div className={s.popup}>
+            <h1 className={s.popup__title}>Limit exhausted</h1>
+            <div className={s.popup__list}>
+              You have reached the limit of comparisons, please register and
+              purchase a paid subscription.
+            </div>
+            <Button className={s.signUp} onClick={handleSignup}>
+              Sign Up
+            </Button>
+          </div>
+        </Popup>
       </section>
     </main>
   );

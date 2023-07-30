@@ -152,11 +152,15 @@
   font-size: 20px;
   line-height: 140%;
   font-weight: $fw-regular;
+  opacity: 0;
   @include mobile-tablet {
     font-size: 18px;
     font-weight: 200;
     margin-bottom: 44px;
   }
+}
+.visible {
+  opacity: 1;
 }
 
 .share {
