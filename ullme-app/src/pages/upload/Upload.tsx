@@ -17,9 +17,11 @@ import Popup from "../../components/Popup/Popup";
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
 import RegForm from "../../features/RegistrationForm/regForm";
 import { AppDispatch, RootState } from "../../store/store";
-import { toggleRegistration } from "../../store/slices/formsSlice";
+import { toggleRegistration, toggleLogin } from "../../store/slices/formsSlice";
 import s from "./Upload.module.scss";
 import { toggleThanksPopup } from "../../store/slices/popupsSlice";
+import { setToken1, setToken2 } from "../../store/slices/tokensSlice";
+import { setPhoto1, setPhoto2 } from "../../store/slices/photosSlice";
 
 const UploadPage = () => {
   const [error1, setError1] = useState(false);
@@ -27,12 +29,15 @@ const UploadPage = () => {
   const [error2, setError2] = useState(false);
   const [photo2, setPhoto2] = useState(true);
   const [isDisabled, setIsDisabled] = useState(true);
-  const [policyChecked, setPolicyChecked] = useState(true);
+  const [policyChecked, setPolicyChecked] = useState(false);
   const [uploadedPhoto1, setUploadedPhoto1] = useState<File | null>(null);
   const [uploadedPhoto2, setUploadedPhoto2] = useState<File | null>(null);
 
   const activeRegistration = useSelector(
     (state: RootState) => state.forms.activeRegistration
+  );
+  const activeLogin = useSelector(
+    (state: RootState) => state.forms.activeLogin
   );
   const activeThanksPopup = useSelector(
     (state: RootState) => state.popups.activeThanksPopup
@@ -50,6 +55,10 @@ const UploadPage = () => {
     setOpenLimitPopup(false);
     dispatch(toggleRegistration(true));
   };
+  const handleLoginClick = () => {
+    dispatch(toggleThanksPopup(false))
+    dispatch(toggleLogin(true))
+  }
 
   useEffect(() => {
     if (photo1 && photo2 && policyChecked) {
@@ -108,11 +117,13 @@ const UploadPage = () => {
                           setUploadedPhoto1(e.target.files![0]);
                           setPhoto1(true);
                           setError1(false);
-                          localStorage.setItem(
-                            "photo1",
-                            convertFile(e.target.files![0])
-                          );
-                          localStorage.setItem("token1", result.data.token);
+                          dispatch(setToken1(convertFile(e.target.files![0])));
+                          dispatch(setToken1(result.data.token))
+                          // localStorage.setItem(
+                          //   "photo1",
+                          //   convertFile(e.target.files![0])
+                          // );
+                          // localStorage.setItem("token1", result.data.token);
                         }
                       });
                     }
@@ -161,11 +172,13 @@ const UploadPage = () => {
                           setUploadedPhoto2(e.target.files![0]);
                           setPhoto2(true);
                           setError2(false);
-                          localStorage.setItem(
-                            "photo2",
-                            convertFile(e.target.files![0])
-                          );
-                          localStorage.setItem("token2", result.data.token);
+                          dispatch(setToken2(convertFile(e.target.files![0])));
+                          dispatch(setToken2(result.data.token));
+                          // localStorage.setItem(
+                          //   "photo2",
+                          //   convertFile(e.target.files![0])
+                          // );
+                          // localStorage.setItem("token2", result.data.token);
                         }
                       });
                     }
@@ -262,6 +275,9 @@ const UploadPage = () => {
               {size.width > 768 && <br />} we do not accept payments. <br />
               We apologize and give you 30 days free of charge.
             </div>
+            <Button className={s.signUp} onClick={handleLoginClick}>
+              Log in
+            </Button>
           </div>
         </Popup>
       </section>

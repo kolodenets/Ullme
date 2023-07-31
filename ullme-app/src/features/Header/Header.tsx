@@ -5,10 +5,14 @@ import MainLogo from "../../../public/assets/icons/ullme-web.svg";
 import MainLogoMob from "../../../public/assets/icons/ullme-mob.svg";
 import CloseBurger from "../../../public/assets/icons/closeBtn.svg";
 import Popup from "../../components/Popup/Popup.js";
-
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import s from "./Header.module.scss";
+import LoginForm from "../LoginForm/loginForm.js";
+import { toggleLogin } from "../../store/slices/formsSlice.js";
+import { AppDispatch, RootState } from "../../store/store.js";
+import { UseFormProps } from "react-hook-form";
 
 const Header = () => {
   const size = useWindowDimensions();
@@ -17,7 +21,11 @@ const Header = () => {
   const [isPopupActive, setIsPopupActive] = useState(false);
 
   const navigate = useNavigate();
-
+  const activeLogin = useSelector(
+    (state: RootState) => state.forms.activeLogin
+  );
+  const dispatch: AppDispatch = useDispatch();
+  const logFormRef = useRef<UseFormProps<FormData>>(null);
   const navigateTo = (page: string) => {
     navigate(page);
   };
@@ -162,6 +170,18 @@ const Header = () => {
           </div>
         </div>
       </Popup>
+      <Popup
+          active={activeLogin}
+          className={s.customPopup}
+          onClose={() => {
+            dispatch(toggleLogin(false));
+            (logFormRef as any)?.current?.resetForm();
+          }}
+        >
+          <div className={s.logPopup}>
+            <LoginForm ref={logFormRef} />
+          </div>
+        </Popup>
     </header>
   );
 };

@@ -276,13 +276,13 @@
   .popup__list {
     @include petraRegular16;
     font-size: 30px;
-    // margin-bottom: 80px;
+    margin-bottom: 80px;
     text-align: center;
 
     @include mobile-tablet {
       font-size: 18px;
       font-weight: 200;
-      // margin-bottom: 48px;
+      margin-bottom: 48px;
     }
   }
 }

@@ -185,3 +185,22 @@
     }
   }
 }
+
+.logPopup {
+  width: 400px;
+  margin: 120px 296px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include mobile-tablet {
+    width: unset;
+    margin: 68px 0 76px;
+    padding: 0 25px;
+  }
+}
+.customPopup {
+  @media screen and (width < 500px){
+    padding: 0;
+    align-items: flex-end;
+  }
+}
