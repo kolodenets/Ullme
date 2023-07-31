@@ -62,15 +62,15 @@ const ResultPage = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      setPercentage(0.86)
-    }, 1500)
-    // getResult();
+    // setTimeout(() => {
+    //   setPercentage(0.86)
+    // }, 1500)
+    getResult();
   }, []);
 
   useEffect(() => {
     if (percentage) {
-      printPercents(Math.floor(percentage * 100));
+      printPercents(Math.floor(percentage));
     }
   }, [percentage]);
 

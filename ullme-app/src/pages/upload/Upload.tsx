@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import cn from "classnames";
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +14,8 @@ import { convertFile } from "../../shared/helpers/convertFile";
 import Popup from "../../components/Popup/Popup";
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
 import s from "./Upload.module.scss";
+import { UseFormProps } from "react-hook-form";
+import RegForm from "../../features/RegistrationForm/regForm";
 
 const UploadPage = () => {
   const [error1, setError1] = useState(false);
@@ -27,7 +29,7 @@ const UploadPage = () => {
 
   const [openLimitPopup, setOpenLimitPopup] = useState(false);
   const [openSignUpPopup, setOpenSignUpPopup] = useState(false);
-
+  const regFormRef = useRef<UseFormProps<FormData>>(null);
   const navigate = useNavigate();
 
   const size = useWindowDimensions();
@@ -38,8 +40,8 @@ const UploadPage = () => {
   };
 
   const handleSignup = () => {
-    console.log('')
-  }
+    console.log("");
+  };
 
   useEffect(() => {
     if (photo1 && photo2 && policyChecked) {
@@ -229,16 +231,16 @@ const UploadPage = () => {
             </Button>
           </div>
         </Popup>
-        <Popup active={openSignUpPopup} onClose={() => setOpenSignUpPopup(false)}>
-          <div className={s.popup}>
-            <h1 className={s.popup__title}>Limit exhausted</h1>
-            <div className={s.popup__list}>
-              You have reached the limit of comparisons, please register and
-              purchase a paid subscription.
-            </div>
-            <Button className={s.signUp} onClick={handleSignup}>
-              Sign Up
-            </Button>
+        <Popup
+          active={openSignUpPopup}
+          className={s.customPopup}
+          onClose={() => {
+            setOpenSignUpPopup(false);
+            (regFormRef as any)?.current?.resetForm();
+          }}
+        >
+          <div className={s.regPopup}>
+            <RegForm ref={regFormRef} />
           </div>
         </Popup>
       </section>

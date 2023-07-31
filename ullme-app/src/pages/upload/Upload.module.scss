@@ -227,7 +227,25 @@
     }
   }
 }
+.regPopup {
+  width: 570px;
+  margin: 84px 211px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include mobile-tablet {
+    width: unset;
+    margin: 68px 0 76px;
+    padding: 0 25px;
+  }
+}
 .signUp {
   width: 303px;
   height: 50px;
+}
+.customPopup {
+  @media screen and (width < 500px){
+    padding: 0;
+    align-items: flex-end;
+  }
 }
