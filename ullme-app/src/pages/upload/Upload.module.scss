@@ -249,3 +249,40 @@
     align-items: flex-end;
   }
 }
+.thanksPopup {
+  width: 670px;
+  margin: 104px 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include mobile-tablet {
+    width: unset;
+    margin: 103px 0 94px;
+    padding: 0 33px;
+  }
+  .popup__title {
+    @include h1;
+    color: $color-black-15;
+    font-weight: $fw-bold;
+    font-size: 48px;
+    margin-bottom: 28px;
+    @include mobile-tablet {
+      font-size: 24px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+  }
+
+  .popup__list {
+    @include petraRegular16;
+    font-size: 30px;
+    // margin-bottom: 80px;
+    text-align: center;
+
+    @include mobile-tablet {
+      font-size: 18px;
+      font-weight: 200;
+      // margin-bottom: 48px;
+    }
+  }
+}
