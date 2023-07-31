@@ -5,13 +5,26 @@ import s from "./Button.module.scss";
 
 interface ButtonProps {
   className: string;
-  onClick: () => void;
-  children: string
+  onClick?: () => void;
+  children: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ className, onClick, children }) => {
+const Button: React.FC<ButtonProps> = ({
+  className,
+  onClick,
+  children,
+  disabled = false,
+  type = "button",
+}) => {
   return (
-    <button className={cn(s.button, className)} onClick={onClick}>
+    <button
+      className={cn(s.button, className)}
+      onClick={onClick}
+      disabled={disabled}
+      type={type}
+    >
       {children}
     </button>
   );

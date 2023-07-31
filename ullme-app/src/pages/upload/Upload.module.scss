@@ -1,0 +1,251 @@
+@use "../../styles/style.scss" as *;
+
+.homePageWrapper {
+  width: 100%;
+  margin: 0 auto;
+  flex-grow: 1;
+}
+
+.section {
+  display: flex;
+
+  @include mobile-tablet {
+    flex-direction: column-reverse;
+    margin-top: 0;
+    gap: 0;
+    margin-bottom: 71px;
+  }
+
+  .container {
+    max-width: 1203px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 100%;
+
+    @include mobile-tablet {
+      justify-content: center;
+    }
+  }
+
+  .heroBody {
+    position: relative;
+    width: 41%;
+
+    @media screen and (width > 1440px) {
+      padding-top: 171px;
+    }
+
+    @include mobile-tablet {
+      width: unset;
+      max-width: 500px;
+    }
+  }
+
+  .mainTitle {
+    @include h1;
+    font-size: 48px;
+    margin-top: 68px;
+    margin-bottom: 12px;
+
+    @include mobile-tablet {
+      font-size: 28px;
+      text-align: center;
+    }
+  }
+  .mainSubtitle {
+    @include petraRegular16;
+    font-weight: $fw-regular;
+    font-size: 30px;
+    margin-bottom: 56px;
+    line-height: 140%;
+
+    @include mobile-tablet {
+      font-size: 18px;
+      margin-bottom: 44px;
+      font-weight: 200;
+    }
+  }
+}
+
+.inputsWrapper {
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 710px;
+  justify-content: space-between;
+  margin-bottom: 28px;
+
+  @include mobile-tablet {
+    width: unset;
+    max-width: unset;
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 240px;
+  height: 336px;
+
+  @include mobile-tablet {
+    gap: 12px;
+    width: 160px;
+    height: 226px;
+  }
+}
+
+.uploadCircle {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  height: 240px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 200px;
+  border: 1px solid #bdbcbc;
+  background: $color-white;
+  @include mobile-tablet {
+    width: 150px;
+    height: 150px;
+  }
+
+  &.error {
+    border: 1px solid $color-red;
+    opacity: 0.5;
+    background: rgba(189, 188, 188, 0.3);
+  }
+
+  span {
+    margin-top: -6px;
+    font-size: 20px;
+    font-weight: $fw-regular;
+    line-height: 140%;
+    @include mobile-tablet {
+      font-size: 14px;
+      font-weight: $fw-medium;
+    }
+  }
+}
+
+.errorMessage {
+  font-size: 20px;
+  font-weight: $fw-regular;
+  line-height: 140%;
+  color: var(--fe-493-e, $color-red);
+  @include mobile-tablet {
+    font-size: 14px;
+    font-weight: $fw-medium;
+    line-height: 140%;
+  }
+}
+.uploadedImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hidden {
+  display: none;
+}
+
+.policyTerms {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.checkBox {
+  cursor: pointer;
+}
+.agreement {
+  @include petraRegular16;
+  width: 517px;
+
+  @include mobile-tablet {
+    width: 300px;
+    font-size: 14px;
+    font-weight: $fw-medium;
+  }
+}
+
+.link {
+  color: $color-blue;
+}
+
+.checkSimilarity {
+  margin-top: 56px;
+  width: 303px;
+  height: 50px;
+  @include mobile-tablet {
+    margin: 136px auto 0;
+  }
+}
+.popup {
+  width: 810px;
+  margin: 125px 85px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include mobile-tablet {
+    width: unset;
+    margin: 84px 0 73px;
+    padding: 0 21px;
+  }
+
+  .popup__title {
+    @include h1;
+    color: $color-black-15;
+    font-weight: $fw-bold;
+    font-size: 48px;
+    margin-bottom: 28px;
+    @include mobile-tablet {
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+  }
+
+  .popup__list {
+    @include petraRegular16;
+    font-size: 30px;
+    margin-bottom: 80px;
+    text-align: center;
+
+    @include mobile-tablet {
+      font-size: 18px;
+      font-weight: 200;
+      margin-bottom: 48px;
+    }
+  }
+}
+.regPopup {
+  width: 570px;
+  margin: 84px 211px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include mobile-tablet {
+    width: unset;
+    margin: 68px 0 76px;
+    padding: 0 25px;
+  }
+}
+.signUp {
+  width: 303px;
+  height: 50px;
+}
+.customPopup {
+  @media screen and (width < 500px){
+    padding: 0;
+    align-items: flex-end;
+  }
+}

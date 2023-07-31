@@ -4,6 +4,7 @@
   font-family: Sora;
   line-height: 105%;
   font-weight: $fw-semibold;
+  color: $color-black-15;
 
   @include mobile-tablet {
     font-size: 64px;

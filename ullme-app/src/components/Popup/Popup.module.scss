@@ -13,7 +13,7 @@
   -ms-flex-pack: center;
   justify-content: center;
   align-items: center;
-  background: rgba(42, 42, 42, 0.20);
+  background: rgba(42, 42, 42, 0.2);
   opacity: 0;
   pointer-events: none;
   -webkit-transition: 0.4s;
@@ -34,7 +34,6 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  max-width: 860px;
   -webkit-transform: scale(0.5);
   -ms-transform: scale(0.5);
   transform: scale(0.5);
@@ -44,7 +43,7 @@
   @media screen and (max-width: 767px) {
     // position: absolute;
     // bottom: 0;
-    max-width: 480px;
+    max-width: 600px;
     width: 100%;
     margin-right: 0px;
   }
@@ -58,11 +57,9 @@
   position: relative;
   background: $color-white;
   border-radius: 16px;
-  padding: 58px 8px 28px;
   @media screen and (max-width: 767px) {
     // position: absolute;
     // bottom: 0;
-    max-width: 480px;
     width: 100%;
   }
 }
@@ -77,12 +74,16 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  top: 15px;
-  right: 15px;
+  top: 24px;
+  right: 24px;
   background: transparent;
   width: 32px;
   height: 32px;
   cursor: pointer;
+  @include mobile-tablet {
+    top: 15px;
+    right: 15px;
+  }
 
   &:active {
     background: transparent;

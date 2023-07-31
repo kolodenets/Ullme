@@ -4,6 +4,7 @@ import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions.js";
 import MainLogo from "../../../public/assets/icons/ullme-web.svg";
 import MainLogoMob from "../../../public/assets/icons/ullme-mob.svg";
 import CloseBurger from "../../../public/assets/icons/closeBtn.svg";
+import Popup from "../../components/Popup/Popup.js";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,23 +12,20 @@ import s from "./Header.module.scss";
 
 const Header = () => {
   const size = useWindowDimensions();
-  const [menuItemActive, setMenuItemActive] = useState(0);
   const [languageItemActive, setLanguageItemActive] = useState(1);
   const [burgerMenuActive, setBurgerMenuActive] = useState(false);
+  const [isPopupActive, setIsPopupActive] = useState(false);
 
   const navigate = useNavigate();
 
-  const navigateTo = (id: number, page: string) => {
-    setMenuItemActive(id);
-    navigate(page)
-  }
+  const navigateTo = (page: string) => {
+    navigate(page);
+  };
 
-  const handleBurgerLinkClick = (id: number, page: string) => {
+  const handleBurgerLinkClick = (page: string) => {
     setBurgerMenuActive(false);
-    navigateTo(id, page)
-  }
-
-
+    navigateTo(page);
+  };
 
   return (
     <header className={s.header}>
@@ -36,25 +34,18 @@ const Header = () => {
           <img
             src={size.width > 768 ? MainLogo : MainLogoMob}
             alt="logo"
-            onClick={() => navigateTo(0, '/')}
+            onClick={() => navigateTo("/")}
           />
           <nav className={s.navbar}>
             <ul className={s.navbar__menu}>
               <li
-                className={cn(s.navbar__menu_item, {
-                  [s.active]: menuItemActive === 1,
-                })}
-                onClick={() => navigateTo(1, '/about')}
+                className={cn(s.navbar__menu_item)}
+                onClick={() => setIsPopupActive(true)}
               >
-                О нас
+                About Us
               </li>
-              <li
-                className={cn(s.navbar__menu_item, {
-                  [s.active]: menuItemActive === 2,
-                })}
-                onClick={() => navigateTo(2, '/contact')}
-              >
-                Контакт
+              <li className={cn(s.navbar__menu_item)}>
+                <a href="mailto:ullme@ullme.com"></a>ullme@ullme.com
               </li>
             </ul>
             <ul className={s.navbar__languages}>
@@ -134,25 +125,43 @@ const Header = () => {
             </li>
           </ul>
           <ul className={cn(s.navbar__menu, s.burgerMenu__links)}>
-              <li
-                className={cn(s.navbar__menu_item, {
-                  [s.active]: menuItemActive === 1,
-                })}
-                onClick={() => handleBurgerLinkClick(1, '/about')}
-              >
-                О нас
-              </li>
-              <li
-                className={cn(s.navbar__menu_item, {
-                  [s.active]: menuItemActive === 2,
-                })}
-                onClick={() => handleBurgerLinkClick(2, '/contact')}
-              >
-                Контакт
-              </li>
-            </ul>
+            <li
+              className={cn(s.navbar__menu_item)}
+              onClick={() => setIsPopupActive(true)}
+            >
+              About Us
+            </li>
+            <li className={cn(s.navbar__menu_item)}>
+              <a href="mailto:ullme@ullme.com"></a>ullme@ullme.com
+            </li>
+          </ul>
         </div>
       </div>
+      <Popup active={isPopupActive} onClose={() => setIsPopupActive(false)}>
+        <div className={s.popup}>
+          <h1 className={s.popup__title}>ULLME</h1>
+          <h4 className={s.popup__subtitle}>AI service knows the answer!</h4>
+          <div className={s.popup__list}>
+            Our small technology company has been developing services based on
+            neural networks for photo and video processing for over 7 years.{" "}
+            <br /> Our services are used by many companies to increase visitor
+            loyalty. <br />
+            <br />
+            Today we offer a new product based on neural networks processing of
+            facial photos.
+            <br />
+            <br /> Our attention was attracted by a large number of articles and
+            researches of scientists on the issue of similarity of married
+            couples. <br /> We have done a lot of work!
+            <br />
+            <br /> Meet ULLME — a neural network based service for determining
+            the similarity of 2 people. The comparison is based on 512
+            parameters, which ensures high accuracy of the results!
+            <br />
+            <br /> And how much do you resemble your soulmate? Check it out!
+          </div>
+        </div>
+      </Popup>
     </header>
   );
 };
