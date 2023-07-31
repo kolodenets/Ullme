@@ -11,7 +11,11 @@ import CheckboxChecked32 from "../../../public/assets/icons/checkbox-checked32.s
 import RedStar from "../../../public/assets/icons/littleRedStar.svg";
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
 import { registerUser } from "../../shared/api/auth";
+import { AppDispatch } from "../../store/store";
+import { toggleRegistration } from "../../store/slices/formsSlice";
+import { toggleThanksPopup } from "../../store/slices/popupsSlice";
 import s from "./form.module.scss";
+import { useDispatch } from "react-redux";
 
 export interface RegistrationParams {
   email: string;
@@ -29,6 +33,7 @@ const RegForm = forwardRef((_, ref) => {
   const [isPolicyChecked, setIsPolicyChecked] = useState(false);
 
   const size = useWindowDimensions();
+  const dispatch: AppDispatch = useDispatch();
 
   const {
     register,
@@ -54,6 +59,11 @@ const RegForm = forwardRef((_, ref) => {
 
   const onSubmit = async (data: RegistrationParams) => {
     const result = await registerUser(data);
+    dispatch(toggleRegistration(false))
+    dispatch(toggleThanksPopup(true))
+    reset();
+    // if(result?.data) {
+    // }
   };
 
   const handleClick = () => {

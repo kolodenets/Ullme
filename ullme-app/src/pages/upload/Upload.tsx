@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import cn from "classnames";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { UseFormProps } from "react-hook-form";
 
 import Camera from "../../../public/assets/icons/cameraIcon.svg";
 import CameraBig from "../../../public/assets/icons/Camera120.svg";
@@ -13,9 +15,11 @@ import Button from "../../components/Button/Button";
 import { convertFile } from "../../shared/helpers/convertFile";
 import Popup from "../../components/Popup/Popup";
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
-import s from "./Upload.module.scss";
-import { UseFormProps } from "react-hook-form";
 import RegForm from "../../features/RegistrationForm/regForm";
+import { AppDispatch, RootState } from "../../store/store";
+import { toggleRegistration } from "../../store/slices/formsSlice";
+import s from "./Upload.module.scss";
+import { toggleThanksPopup } from "../../store/slices/popupsSlice";
 
 const UploadPage = () => {
   const [error1, setError1] = useState(false);
@@ -27,8 +31,16 @@ const UploadPage = () => {
   const [uploadedPhoto1, setUploadedPhoto1] = useState<File | null>(null);
   const [uploadedPhoto2, setUploadedPhoto2] = useState<File | null>(null);
 
+  const activeRegistration = useSelector(
+    (state: RootState) => state.forms.activeRegistration
+  );
+  const activeThanksPopup = useSelector(
+    (state: RootState) => state.popups.activeThanksPopup
+  );
+  const dispatch: AppDispatch = useDispatch();
+
   const [openLimitPopup, setOpenLimitPopup] = useState(false);
-  const [openSignUpPopup, setOpenSignUpPopup] = useState(false);
+
   const regFormRef = useRef<UseFormProps<FormData>>(null);
   const navigate = useNavigate();
 
@@ -36,11 +48,7 @@ const UploadPage = () => {
 
   const handleSignupClick = () => {
     setOpenLimitPopup(false);
-    setOpenSignUpPopup(true);
-  };
-
-  const handleSignup = () => {
-    console.log("");
+    dispatch(toggleRegistration(true));
   };
 
   useEffect(() => {
@@ -232,15 +240,28 @@ const UploadPage = () => {
           </div>
         </Popup>
         <Popup
-          active={openSignUpPopup}
+          active={activeRegistration}
           className={s.customPopup}
           onClose={() => {
-            setOpenSignUpPopup(false);
+            dispatch(toggleRegistration(false));
             (regFormRef as any)?.current?.resetForm();
           }}
         >
           <div className={s.regPopup}>
             <RegForm ref={regFormRef} />
+          </div>
+        </Popup>
+        <Popup
+          active={activeThanksPopup}
+          onClose={() => dispatch(toggleThanksPopup(false))}
+        >
+          <div className={s.thanksPopup}>
+            <h1 className={s.popup__title}>Thank you for registering!</h1>
+            <div className={s.popup__list}>
+              At the moment due to technical reasons{" "}
+              {size.width > 768 && <br />} we do not accept payments. <br />
+              We apologize and give you 30 days free of charge.
+            </div>
           </div>
         </Popup>
       </section>
