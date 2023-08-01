@@ -25,22 +25,25 @@ import { setPhoto1, setPhoto2 } from "../../store/slices/photosSlice";
 
 const UploadPage = () => {
   const [error1, setError1] = useState(false);
-  const [photo1, setPhoto1] = useState(true);
+  // const [isPhoto1, setIsPhoto1] = useState(false);
   const [error2, setError2] = useState(false);
-  const [photo2, setPhoto2] = useState(true);
+  // const [isPhoto2, setIsPhoto2] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [policyChecked, setPolicyChecked] = useState(false);
-  const [uploadedPhoto1, setUploadedPhoto1] = useState<File | null>(null);
-  const [uploadedPhoto2, setUploadedPhoto2] = useState<File | null>(null);
+  // const [uploadedPhoto1, setUploadedPhoto1] = useState<File | null>(null);
+  // const [uploadedPhoto2, setUploadedPhoto2] = useState<File | null>(null);
 
   const activeRegistration = useSelector(
     (state: RootState) => state.forms.activeRegistration
   );
-  const activeLogin = useSelector(
-    (state: RootState) => state.forms.activeLogin
-  );
   const activeThanksPopup = useSelector(
     (state: RootState) => state.popups.activeThanksPopup
+  );
+  const uploadedPhoto1 = useSelector(
+    (state: RootState) => state.photos.photo1
+  );
+  const uploadedPhoto2 = useSelector(
+    (state: RootState) => state.photos.photo2
   );
   const dispatch: AppDispatch = useDispatch();
 
@@ -56,17 +59,24 @@ const UploadPage = () => {
     dispatch(toggleRegistration(true));
   };
   const handleLoginClick = () => {
-    dispatch(toggleThanksPopup(false))
-    dispatch(toggleLogin(true))
-  }
+    dispatch(toggleThanksPopup(false));
+    dispatch(toggleLogin(true));
+  };
 
   useEffect(() => {
-    if (photo1 && photo2 && policyChecked) {
+    if (uploadedPhoto1 && uploadedPhoto2 && policyChecked) {
       setIsDisabled(false);
     } else {
       setIsDisabled(true);
     }
-  }, [photo1, photo2, policyChecked]);
+  }, [uploadedPhoto1, uploadedPhoto2, policyChecked]);
+
+  useEffect(() => {
+    dispatch(setPhoto1(null));
+    dispatch(setPhoto2(null));
+    dispatch(setToken1(null));
+    dispatch(setToken2(null));
+  }, []);
   return (
     <main className={s.homePageWrapper}>
       <section className={s.section}>
@@ -91,7 +101,7 @@ const UploadPage = () => {
                 {uploadedPhoto1 ? (
                   <div
                     className={s.uploadedImage}
-                    style={{ backgroundImage: convertFile(uploadedPhoto1) }}
+                    style={{ backgroundImage: uploadedPhoto1 }}
                   ></div>
                 ) : (
                   <div className={cn(s.uploadCircle, { [s.error]: error1 })}>
@@ -114,11 +124,11 @@ const UploadPage = () => {
                         if (!result?.status) {
                           setError1(true);
                         } else {
-                          setUploadedPhoto1(e.target.files![0]);
-                          setPhoto1(true);
+                          // setUploadedPhoto1(e.target.files![0]);
+                          // setIsPhoto1(true);
                           setError1(false);
-                          dispatch(setToken1(convertFile(e.target.files![0])));
-                          dispatch(setToken1(result.data.token))
+                          dispatch(setPhoto1(convertFile(e.target.files![0])));
+                          dispatch(setToken1(result.data.token));
                           // localStorage.setItem(
                           //   "photo1",
                           //   convertFile(e.target.files![0])
@@ -147,7 +157,7 @@ const UploadPage = () => {
                 {uploadedPhoto2 ? (
                   <div
                     className={s.uploadedImage}
-                    style={{ backgroundImage: convertFile(uploadedPhoto2) }}
+                    style={{ backgroundImage: uploadedPhoto2 }}
                   ></div>
                 ) : (
                   <div className={cn(s.uploadCircle, { [s.error]: error2 })}>
@@ -169,10 +179,10 @@ const UploadPage = () => {
                         if (!result?.status) {
                           setError2(true);
                         } else {
-                          setUploadedPhoto2(e.target.files![0]);
-                          setPhoto2(true);
+                          // setUploadedPhoto2(e.target.files![0]);
+                          // setIsPhoto2(true);
                           setError2(false);
-                          dispatch(setToken2(convertFile(e.target.files![0])));
+                          dispatch(setPhoto2(convertFile(e.target.files![0])));
                           dispatch(setToken2(result.data.token));
                           // localStorage.setItem(
                           //   "photo2",
@@ -226,7 +236,7 @@ const UploadPage = () => {
           </div>
           <Button
             className={s.checkSimilarity}
-            disabled={isDisabled}
+            // disabled={isDisabled}
             onClick={() => {
               const tryNumber = Number(localStorage.getItem("tryNumber")) ?? 1;
               if (tryNumber < 3) {

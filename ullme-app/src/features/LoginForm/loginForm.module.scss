@@ -59,11 +59,6 @@
       &:focus {
         outline: none;
       }
-
-      @media screen and (max-width: 767px) {
-        max-width: 324px;
-        width: 100%;
-      }
     }
 
     .icon {
@@ -157,5 +152,18 @@
   height: 50px;
   @include mobile-tablet {
     margin: 240px auto 0;
+  }
+}
+
+.inputField {
+  position: relative;
+  width: fit-content;
+
+  button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+    background: none;
   }
 }

@@ -9,9 +9,10 @@ import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
 import { loginUser } from "../../shared/api/auth";
 import { AppDispatch } from "../../store/store";
 import { toggleLogin } from "../../store/slices/formsSlice";
-import s from "./loginForm.module.scss";
 import { useDispatch } from "react-redux";
+import ClearField from "../../../public/assets/icons/clearField.svg";
 
+import s from "./loginForm.module.scss";
 export interface LoginParams {
   email: string;
   password: string
@@ -31,6 +32,7 @@ const LoginForm = forwardRef((_, ref) => {
     register,
     handleSubmit,
     reset,
+    resetField,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -55,6 +57,8 @@ const LoginForm = forwardRef((_, ref) => {
     // }
   };
 
+  const handleClearEmail = () => resetField('email')
+
 
   return (
     <div className={s.form__wrapper}>
@@ -67,7 +71,8 @@ const LoginForm = forwardRef((_, ref) => {
               <span>Email</span>
             </div>{" "}
           </label>
-          <input
+          <div className={s.inputField}>
+            <input
             type="email"
             {...register("email", {
               required: true,
@@ -82,6 +87,11 @@ const LoginForm = forwardRef((_, ref) => {
             })}
             // placeholder="user_name@gmail.com"
           />
+          <button type="button" onClick={handleClearEmail}>
+              <img src={ClearField} alt="clear" />
+            </button>
+          </div>
+          
           <span className={s.underInputText}>Please input  Email or delete this field.</span>
           {errors.email?.type === "required" && (
             <p className={s.errorMsg}>Введите адрес электронной почты.</p>

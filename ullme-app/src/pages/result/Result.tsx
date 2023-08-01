@@ -18,10 +18,12 @@ import Facebook44 from "../../../public/assets/icons/fi_facebook44.svg";
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
 import s from "./Result.module.scss";
 import { checkSimilarity } from "../../shared/api/checkSimilarity";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../store/store";
 
 const ResultPage = () => {
-  const photo1 = localStorage.getItem("photo1");
-  const photo2 = localStorage.getItem("photo2");
+  // const photo1 = localStorage.getItem("photo1");
+  // const photo2 = localStorage.getItem("photo2");
   const size = useWindowDimensions();
   const navigate = useNavigate();
 
@@ -29,31 +31,35 @@ const ResultPage = () => {
   const [percentageToShow, setPercentageToShow] = useState<number>(0);
   const [visibleText, setVisibleText] = useState<boolean>(false);
 
-  const mainToken = localStorage.getItem("token1")!;
-  const compareToken = localStorage.getItem("token2")!;
+  // const mainToken = localStorage.getItem("token1")!;
+  // const compareToken = localStorage.getItem("token2")!;
+  const photo1 = useSelector((state: RootState) => state.photos.photo1);
+  const photo2 = useSelector((state: RootState) => state.photos.photo2);
+  const mainToken = useSelector((state: RootState) => state.tokens.token1);
+  const compareToken = useSelector((state: RootState) => state.tokens.token2);
 
   const getResult = async () => {
-    const result = await checkSimilarity(mainToken, compareToken);
-    setPercentage(result?.data.match_percentage * 100);
+    if (mainToken && compareToken) {
+      const result = await checkSimilarity(mainToken, compareToken);
+      setPercentage(result?.data.match_percentage * 100);
+    }
   };
 
   const printPercents = (percent: number) => {
     let current = 0;
     setTimeout(function go() {
       setPercentageToShow(current);
-      if(current == percent) {
-        setVisibleText(true)
+      if (current == percent) {
+        setVisibleText(true);
       }
       if (current < percent) {
         if (current > 0.6 * percent) {
           setTimeout(go, 100);
         } else if (current > 0.75 * percent) {
           setTimeout(go, 50 + current * 2);
-        } 
-        else if (current > 0.85 * percent) {
+        } else if (current > 0.85 * percent) {
           setTimeout(go, 50 + current * 3);
-        } 
-        else {
+        } else {
           setTimeout(go, 50);
         }
       }
@@ -102,7 +108,7 @@ const ResultPage = () => {
             </div>
           </div>
 
-          <p className={cn(s.resultText, {[s.visible]: visibleText})}>
+          <p className={cn(s.resultText, { [s.visible]: visibleText })}>
             In the morning after waking up you can have a feeling that you're
             looking in the mirror. You look so much alike!
           </p>

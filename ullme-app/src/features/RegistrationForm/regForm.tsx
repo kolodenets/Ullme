@@ -1,6 +1,6 @@
 import { forwardRef, useState, useImperativeHandle } from "react";
 import { useForm, Controller } from "react-hook-form";
-import cn from 'classnames'
+import cn from "classnames";
 // import { useDispatch } from "react-redux";
 
 import Button from "../../components/Button/Button";
@@ -8,6 +8,7 @@ import Checkbox from "../../../public/assets/icons/checkbox.svg";
 import Checkbox32 from "../../../public/assets/icons/checkbox32.svg";
 import CheckboxChecked from "../../../public/assets/icons/checkbox-checked.svg";
 import CheckboxChecked32 from "../../../public/assets/icons/checkbox-checked32.svg";
+import ClearField from "../../../public/assets/icons/clearField.svg";
 import RedStar from "../../../public/assets/icons/littleRedStar.svg";
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
 import { registerUser } from "../../shared/api/auth";
@@ -29,7 +30,6 @@ export interface RegistrationParams {
 // } from "../../store/slices/alertsSlice";
 
 const RegForm = forwardRef((_, ref) => {
-
   const [isPolicyChecked, setIsPolicyChecked] = useState(false);
 
   const size = useWindowDimensions();
@@ -41,6 +41,7 @@ const RegForm = forwardRef((_, ref) => {
     control,
     getValues,
     reset,
+    resetField,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -59,17 +60,15 @@ const RegForm = forwardRef((_, ref) => {
 
   const onSubmit = async (data: RegistrationParams) => {
     const result = await registerUser(data);
-    dispatch(toggleRegistration(false))
-    dispatch(toggleThanksPopup(true))
+    dispatch(toggleRegistration(false));
+    dispatch(toggleThanksPopup(true));
     reset();
     // if(result?.data) {
     // }
   };
 
-  const handleClick = () => {
-    // dispatch(toggleRegistration(false));
-    // dispatch(toggleLogin(true));
-  };
+  const handleClearName = () => resetField("username");
+  const handleClearEmail = () => resetField("email");
 
   return (
     <div className={s.form__wrapper}>
@@ -82,22 +81,30 @@ const RegForm = forwardRef((_, ref) => {
               <span>Name</span>
             </div>{" "}
           </label>
-          <input
-            minLength={2}
-            maxLength={25}
-            type="text"
-            {...register("username", {
-              required: true,
-              validate: {
-                checkLength: (value) => value.length >= 2,
-                matchPattern: (value) =>
-                  /(^[a-zA-Zа-яА-Я0-9.,-]+)(\s?[a-zA-Zа-яА-Я0-9.,-]+)+$/.test(
-                    value
-                  ),
-              },
-            })}
-          />
-          <span className={s.underInputText}>Please input  Name or delete this field.</span>
+          <div className={s.inputField}>
+            <input
+              minLength={2}
+              maxLength={25}
+              type="text"
+              {...register("username", {
+                required: true,
+                validate: {
+                  checkLength: (value) => value.length >= 2,
+                  matchPattern: (value) =>
+                    /(^[a-zA-Zа-яА-Я0-9.,-]+)(\s?[a-zA-Zа-яА-Я0-9.,-]+)+$/.test(
+                      value
+                    ),
+                },
+              })}
+            />
+            <button type="button" onClick={handleClearName}>
+              <img src={ClearField} alt="clear" />
+            </button>
+          </div>
+
+          <span className={s.underInputText}>
+            Please input Name or delete this field.
+          </span>
           {errors.username?.type === "required" && (
             <p className={s.errorMsg}>Введите имя.</p>
           )}
@@ -106,28 +113,36 @@ const RegForm = forwardRef((_, ref) => {
           )} */}
         </div>
         <div className={s.form__control}>
-        <label>
+          <label>
             <div className={s.label__content}>
               <img src={RedStar} alt="star" />
               <span>Email</span>
             </div>{" "}
           </label>
-          <input
-            type="email"
-            {...register("email", {
-              required: true,
-              validate: {
-                matchPattern: (value) =>
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-                    value
-                  ),
-              },
-              // pattern:
-              //   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-            })}
-            // placeholder="user_name@gmail.com"
-          />
-          <span className={s.underInputText}>Please input  Email or delete this field.</span>
+          <div className={s.inputField}>
+            <input
+              type="email"
+              {...register("email", {
+                required: true,
+                validate: {
+                  matchPattern: (value) =>
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+                      value
+                    ),
+                },
+                // pattern:
+                //   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              })}
+              // placeholder="user_name@gmail.com"
+            />
+            <button type="button" onClick={handleClearEmail}>
+              <img src={ClearField} alt="clear" />
+            </button>
+          </div>
+
+          <span className={s.underInputText}>
+            Please input Email or delete this field.
+          </span>
           {errors.email?.type === "required" && (
             <p className={s.errorMsg}>Введите адрес электронной почты.</p>
           )}
@@ -210,10 +225,9 @@ const RegForm = forwardRef((_, ref) => {
           </p>
         </div>
 
-          <Button className={s.signUp} type="submit" disabled={!isPolicyChecked}>
-            Sign Up
-          </Button>
-
+        <Button className={s.signUp} type="submit" disabled={!isPolicyChecked}>
+          Sign Up
+        </Button>
       </form>
     </div>
   );
