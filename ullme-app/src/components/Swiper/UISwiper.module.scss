@@ -13,6 +13,108 @@
   border-radius: 8px;
   border: 0.5px solid $color-blue;
   background-color: #fafafa;
+
+  .photosWrapper {
+    display: flex;
+    position: relative;
+    width: 320px;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    @include mobile-tablet {
+      width: 320px;
+      margin: 0 auto 30px;
+      padding-left: 20px;
+    }
+  }
+  
+  .uploadedImage1,
+  .uploadedImage2 {
+    width: 168px;
+    height: 168px;
+    border-radius: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-image: url("/public/assets/images/default.png");
+    @include mobile-tablet {
+      width: 150px;
+      height: 150px;
+    }
+  }
+  
+  .uploadedImage1 {
+    transform: rotate(-15deg);
+  }
+  .uploadedImage2 {
+    position: absolute;
+    top: 0;
+    left: 170px;
+    top: 20px;
+    transform: rotate(15deg);
+    z-index: 5;
+    @include mobile-tablet {
+      left: 155px;
+    }
+  }
+  
+  .resultContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+    margin: 0 auto 30px;
+  
+    @include mobile-tablet {
+      font-size: 48px;
+      gap: 12px;
+      margin: 0 auto 22px;
+    }
+  
+    p {
+      @include h1;
+      font-size: 48px;
+      color: $color-black-15;
+      text-align: center;
+      @include mobile-tablet {
+        font-size: 48px;
+      }
+    }
+  }
+  
+  .bar {
+    width: 329px;
+    height: 13px;
+    background-color: $color-white-D9;
+    border-radius: 100px;
+    @include mobile-tablet {
+      width: 311px;
+      height: 8px;
+    }
+  
+    .resultNumber {
+      height: 13px;
+      border-radius: 100px;
+      background-color: $color-red;
+      @include mobile-tablet {
+        height: 8px;
+      }
+    }
+  }
+  
+  .resultText {
+    color: $color-black-15;
+    max-width: 400px;
+    align-self: center;
+    font-size: 14px;
+    line-height: 140%;
+    font-weight: $fw-regular;
+    @include mobile-tablet {
+      font-size: 18px;
+      font-weight: 200;
+      margin-bottom: 44px;
+    }
+  }
 }
 .second,
 .third,
@@ -22,6 +124,87 @@
   height: 420px;
   display: flex;
   flex-direction: column;
+
+  .photosWrapper {
+    display: flex;
+    position: relative;
+    padding-top: 175px;
+    padding-left: 20px;
+    margin-bottom: 18px;
+    gap: 16px;
+    @include mobile-tablet {
+      margin: 0 auto 30px;
+      padding-left: 20px;
+    }
+  }
+  
+  .uploadedImage1,
+  .uploadedImage2 {
+    width: 105px;
+    height: 105px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("/public/assets/images/1.png");
+    @include mobile-tablet {
+      // width: 150px;
+      // height: 150px;
+    }
+  }
+  
+  
+  .resultContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 0 auto 15px;
+  
+    @include mobile-tablet {
+
+    }
+  
+    p {
+      @include h1;
+      font-size: 30px;
+      color: $color-black-15;
+      text-align: center;
+      @include mobile-tablet {
+
+      }
+    }
+  }
+  
+  .bar {
+    width: 208px;
+    height: 8px;
+    background-color: $color-white-D9;
+    border-radius: 44px;
+    @include mobile-tablet {
+
+    }
+  
+    .resultNumber {
+      height: 8px;
+      border-radius: 44px;
+      background-color: $color-red;
+      @include mobile-tablet {
+
+      }
+    }
+  }
+  
+  .resultText {
+    color: $color-black-15;
+    max-width: 232px;
+    align-self: center;
+    font-size: 9px;
+    line-height: 140%;
+    font-weight: $fw-regular;
+    @include mobile-tablet {
+
+    }
+  }
 }
 .second {
   background: url("../../../public/assets/svg/secondTemplate.svg");
@@ -35,12 +218,23 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  .thirdPhotos {
+    padding-top: 108px;
+  }
 }
 .fourth {
   background: url("../../../public/assets/svg/fourthTemplate.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  .fourthPhotos {
+    padding-top: 49px;
+  }
+  .white {
+    color: #fff !important;
+  }
 }
 .fifth {
   background-color: lightgray;
@@ -48,106 +242,10 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
 
-.photosWrapper {
-  display: flex;
-  position: relative;
-  width: 320px;
-  padding-top: 20px;
-  padding-left: 20px;
-  margin-bottom: 30px;
-  @include mobile-tablet {
-    width: 320px;
-    margin: 0 auto 30px;
-    padding-left: 20px;
+  .fifthPhotos {
+    padding-top: 17px;
   }
 }
 
-.uploadedImage1,
-.uploadedImage2 {
-  width: 168px;
-  height: 168px;
-  border-radius: 200px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  // background-image: url("/public/assets/images/default.png");
-  @include mobile-tablet {
-    width: 150px;
-    height: 150px;
-  }
-}
 
-.uploadedImage1 {
-  transform: rotate(-15deg);
-}
-.uploadedImage2 {
-  position: absolute;
-  top: 0;
-  left: 170px;
-  top: 20px;
-  transform: rotate(15deg);
-  z-index: 5;
-  @include mobile-tablet {
-    left: 155px;
-  }
-}
-
-.resultContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 26px;
-  margin: 0 auto 30px;
-
-  @include mobile-tablet {
-    font-size: 48px;
-    gap: 12px;
-    margin: 0 auto 22px;
-  }
-
-  p {
-    @include h1;
-    font-size: 48px;
-    color: $color-black-15;
-    text-align: center;
-    @include mobile-tablet {
-      font-size: 48px;
-    }
-  }
-}
-
-.bar {
-  width: 329px;
-  height: 13px;
-  background-color: $color-white-D9;
-  border-radius: 100px;
-  @include mobile-tablet {
-    width: 311px;
-    height: 8px;
-  }
-
-  .resultNumber {
-    height: 13px;
-    border-radius: 100px;
-    background-color: $color-red;
-    @include mobile-tablet {
-      height: 8px;
-    }
-  }
-}
-
-.resultText {
-  color: $color-black-15;
-  max-width: 400px;
-  align-self: center;
-  font-size: 14px;
-  line-height: 140%;
-  font-weight: $fw-regular;
-  @include mobile-tablet {
-    font-size: 18px;
-    font-weight: 200;
-    margin-bottom: 44px;
-  }
-}

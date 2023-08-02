@@ -29,7 +29,6 @@ const UISwiper: FC<UISwiperProps> = ({
       <Swiper
         modules={[Pagination]}
         pagination={{ clickable: true }}
-
         slidesPerView={"auto"}
         // centeredSlides={true}
         spaceBetween={30}
@@ -64,16 +63,108 @@ const UISwiper: FC<UISwiperProps> = ({
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className={cn(s.slideContainer, s.second)}></div>
+          <div className={cn(s.slideContainer, s.second)}>
+            <div className={s.photosWrapper}>
+              <div
+                className={s.uploadedImage1}
+                style={{ backgroundImage: photo1! }}
+              ></div>
+              <div
+                className={s.uploadedImage2}
+                style={{ backgroundImage: photo2! }}
+              ></div>
+            </div>
+
+            <div className={s.resultContainer}>
+              <p>{percentage}%</p>
+              <div className={s.bar}>
+                <div
+                  className={s.resultNumber}
+                  style={{ width: `${percentage}%` }}
+                ></div>
+              </div>
+            </div>
+
+            <p className={cn(s.resultText)}>{resultText}</p>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className={cn(s.slideContainer, s.third)}></div>
+          <div className={cn(s.slideContainer, s.third)}>
+            <div className={cn(s.photosWrapper, s.thirdPhotos)}>
+              <div
+                className={s.uploadedImage1}
+                style={{ backgroundImage: photo1! }}
+              ></div>
+              <div
+                className={s.uploadedImage2}
+                style={{ backgroundImage: photo2! }}
+              ></div>
+            </div>
+
+            <div className={s.resultContainer}>
+              <p>{percentage}%</p>
+              <div className={s.bar}>
+                <div
+                  className={s.resultNumber}
+                  style={{ width: `${percentage}%` }}
+                ></div>
+              </div>
+            </div>
+
+            <p className={cn(s.resultText)}>{resultText}</p>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className={cn(s.slideContainer, s.fourth)}></div>
+          <div className={cn(s.slideContainer, s.fourth)}>
+            <div className={cn(s.photosWrapper, s.fourthPhotos)}>
+              <div
+                className={s.uploadedImage1}
+                style={{ backgroundImage: photo1! }}
+              ></div>
+              <div
+                className={s.uploadedImage2}
+                style={{ backgroundImage: photo2! }}
+              ></div>
+            </div>
+
+            <div className={cn(s.resultContainer, s.white)}>
+              <p className={s.white}>{percentage}%</p>
+              <div className={s.bar}>
+                <div
+                  className={s.resultNumber}
+                  style={{ width: `${percentage}%` }}
+                ></div>
+              </div>
+            </div>
+
+            <p className={cn(s.resultText, s.white)}>{resultText}</p>
+          </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className={cn(s.slideContainer, s.fifth)}></div>
+          <div className={cn(s.slideContainer, s.fifth)}>
+            <div className={cn(s.photosWrapper, s.fifthPhotos)}>
+              <div
+                className={s.uploadedImage1}
+                style={{ backgroundImage: photo1! }}
+              ></div>
+              <div
+                className={s.uploadedImage2}
+                style={{ backgroundImage: photo2! }}
+              ></div>
+            </div>
+
+            <div className={s.resultContainer}>
+              <p>{percentage}%</p>
+              <div className={s.bar}>
+                <div
+                  className={s.resultNumber}
+                  style={{ width: `${percentage}%` }}
+                ></div>
+              </div>
+            </div>
+
+            <p className={cn(s.resultText)}>{resultText}</p>
+          </div>
         </SwiperSlide>
       </Swiper>
     </>
