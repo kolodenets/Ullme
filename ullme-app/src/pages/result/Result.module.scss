@@ -81,7 +81,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("/public/assets/images/default.png");
+  // background-image: url("/public/assets/images/default.png");
   @include mobile-tablet {
     width: 150px;
     height: 150px;
@@ -220,6 +220,7 @@
   align-self: flex-start;
   align-items: center;
   margin-bottom: 108px;
+  margin-top: 141px;
 
   @include mobile-tablet {
     gap: 52px;
@@ -249,4 +250,8 @@
     display: block;
     margin: 56px auto 74px;
   }
+}
+.slider {
+  width: 420px;
+  align-self: flex-start;
 }

@@ -20,6 +20,7 @@ import s from "./Result.module.scss";
 import { checkSimilarity } from "../../shared/api/checkSimilarity";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
+import UISwiper from "../../components/Swiper/UISwiper";
 
 const ResultPage = () => {
   // const photo1 = localStorage.getItem("photo1");
@@ -147,7 +148,8 @@ const ResultPage = () => {
             </div>
           </div>
           <p className={s.post}>Post the results on social networks</p>
-          <div className={s.slider}></div>
+          <div className={s.slider}><UISwiper photo1={photo1} photo2={photo2} percentage={percentageToShow}/></div>
+          
           <div className={s.lastBlock}>
             <div
               className={s.shareResult}

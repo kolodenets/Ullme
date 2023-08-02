@@ -1,57 +1,153 @@
-@use '../../styles/style.scss' as *;
-
+@use "../../styles/style.scss" as *;
 .slideContainer {
   display: flex !important;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  width: 634px !important;
-  height: 310px !important;
   @include petraRegular16;
-  font-size: 24px;
-  text-transform: uppercase;
   text-align: center;
+}
 
+.first {
+  width: 416px;
+  height: 416px;
+  border-radius: 8px;
+  border: 0.5px solid $color-blue;
+  background-color: #fafafa;
+}
+.second,
+.third,
+.fourth,
+.fifth {
+  width: 420px;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+.second {
+  background: url("../../../public/assets/svg/secondTemplate.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.third {
+  background: url("../../../public/assets/svg/thirdTemplate.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.fourth {
+  background: url("../../../public/assets/svg/fourthTemplate.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.fifth {
+  background-color: lightgray;
+  background-image: url("../../../public/assets/svg/fifthTemplate.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.photosWrapper {
+  display: flex;
+  position: relative;
+  width: 320px;
+  padding-top: 20px;
+  padding-left: 20px;
+  margin-bottom: 30px;
   @include mobile-tablet {
-    width: 323px !important;
-    height: 166px !important;
+    width: 320px;
+    margin: 0 auto 30px;
+    padding-left: 20px;
   }
 }
-.whiteText {
-  color: $color-white;
-}
-.yellowText {
-  color: $color-yellow;
-}
-.blueGrayText {
-  color: $color-blue-gray;
-}
-.redText {
-  color: $color-red;
-}
-.blackText {
-  color: $color-black-3E;
+
+.uploadedImage1,
+.uploadedImage2 {
+  width: 168px;
+  height: 168px;
+  border-radius: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  // background-image: url("/public/assets/images/default.png");
+  @include mobile-tablet {
+    width: 150px;
+    height: 150px;
+  }
 }
 
-.blueGray {
-  background-color: $color-blue-gray;
+.uploadedImage1 {
+  transform: rotate(-15deg);
 }
-.peach {
-  background-color: $color-peach;
+.uploadedImage2 {
+  position: absolute;
+  top: 0;
+  left: 170px;
+  top: 20px;
+  transform: rotate(15deg);
+  z-index: 5;
+  @include mobile-tablet {
+    left: 155px;
+  }
 }
-.white {
+
+.resultContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  margin: 0 auto 30px;
+
+  @include mobile-tablet {
+    font-size: 48px;
+    gap: 12px;
+    margin: 0 auto 22px;
+  }
+
+  p {
+    @include h1;
+    font-size: 48px;
+    color: $color-black-15;
+    text-align: center;
+    @include mobile-tablet {
+      font-size: 48px;
+    }
+  }
+}
+
+.bar {
+  width: 329px;
+  height: 13px;
   background-color: $color-white-D9;
-}
-
-.firstSlide, .secondSlide {
-  width: 310px;
-}
-.firstSlide {
+  border-radius: 100px;
   @include mobile-tablet {
-    width: 223px;
+    width: 311px;
+    height: 8px;
+  }
+
+  .resultNumber {
+    height: 13px;
+    border-radius: 100px;
+    background-color: $color-red;
+    @include mobile-tablet {
+      height: 8px;
+    }
   }
 }
-.secondSlide {
+
+.resultText {
+  color: $color-black-15;
+  max-width: 400px;
+  align-self: center;
+  font-size: 14px;
+  line-height: 140%;
+  font-weight: $fw-regular;
   @include mobile-tablet {
-    width: 199px;
+    font-size: 18px;
+    font-weight: 200;
+    margin-bottom: 44px;
   }
 }

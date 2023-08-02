@@ -115,6 +115,7 @@ const UploadPage = () => {
                   style={{ display: "none" }}
                   onChange={(e) => {
                     if (e.target.files) {
+                      dispatch(setPhoto1(convertFile(e.target.files![0])));
                       uploadPhoto(e.target.files[0]).then((result) => {
                         if (!result?.status) {
                           setError1(true);
@@ -170,6 +171,7 @@ const UploadPage = () => {
                   style={{ display: "none" }}
                   onChange={(e) => {
                     if (e.target.files) {
+                      dispatch(setPhoto2(convertFile(e.target.files![0])));
                       uploadPhoto(e.target.files[0]).then((result) => {
                         if (!result?.status) {
                           setError2(true);
