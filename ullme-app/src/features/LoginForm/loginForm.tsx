@@ -1,21 +1,20 @@
 import { forwardRef, useImperativeHandle } from "react";
 import { useForm } from "react-hook-form";
-import cn from 'classnames'
-
+import cn from "classnames";
 
 import Button from "../../components/Button/Button";
 import RedStar from "../../../public/assets/icons/littleRedStar.svg";
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
 import { loginUser } from "../../shared/api/auth";
 import { AppDispatch } from "../../store/store";
-import { toggleLogin } from "../../store/slices/formsSlice";
+import { toggleLogin, toggleRegistration } from "../../store/slices/formsSlice";
 import { useDispatch } from "react-redux";
 import ClearField from "../../../public/assets/icons/clearField.svg";
 
 import s from "./loginForm.module.scss";
 export interface LoginParams {
   email: string;
-  password: string
+  password: string;
 }
 
 // import {
@@ -24,7 +23,6 @@ export interface LoginParams {
 // } from "../../store/slices/alertsSlice";
 
 const LoginForm = forwardRef((_, ref) => {
-
   const size = useWindowDimensions();
   const dispatch: AppDispatch = useDispatch();
 
@@ -50,22 +48,25 @@ const LoginForm = forwardRef((_, ref) => {
 
   const onSubmit = async (data: LoginParams) => {
     const result = await loginUser(data);
-    dispatch(toggleLogin(false))
+    dispatch(toggleLogin(false));
 
     reset();
     // if(result?.data) {
     // }
   };
 
-  const handleClearEmail = () => resetField('email')
-
+  const handleClearEmail = () => resetField("email");
+  const handleSignupClick = () => {
+    dispatch(toggleRegistration(true))
+    dispatch(toggleLogin(false))
+  }
 
   return (
     <div className={s.form__wrapper}>
       <p className={s.form__title}>Log in</p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={s.form__control}>
-        <label>
+          <label>
             <div className={s.label__content}>
               <img src={RedStar} alt="star" />
               <span>Email</span>
@@ -73,40 +74,44 @@ const LoginForm = forwardRef((_, ref) => {
           </label>
           <div className={s.inputField}>
             <input
-            type="email"
-            {...register("email", {
-              required: true,
-              validate: {
-                matchPattern: (value) =>
-                  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-                    value
-                  ),
-              },
-              // pattern:
-              //   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-            })}
-            // placeholder="user_name@gmail.com"
-          />
-          <button type="button" onClick={handleClearEmail}>
+              type="email"
+              {...register("email", {
+                required: true,
+                validate: {
+                  matchPattern: (value) =>
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+                      value
+                    ),
+                },
+                // pattern:
+                //   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              })}
+              // placeholder="user_name@gmail.com"
+            />
+            <button type="button" onClick={handleClearEmail}>
               <img src={ClearField} alt="clear" />
             </button>
           </div>
-          
-          <span className={s.underInputText}>Please input  Email or delete this field.</span>
+
+          <p className={s.underInputText}>
+            Please input Email or delete this field.
+          </p>
           {errors.email?.type === "required" && (
-            <p className={s.errorMsg}>Введите адрес электронной почты.</p>
+            <p className={s.errorMsg}>Email is required</p>
           )}
-          {/* {errors.email?.type === "matchPattern" && (
-            <p className="errorMsg">
-              Проверьте правильность введения электронной почты.
+          {errors.email?.type === "matchPattern" && (
+            <p className={s.errorMsg}>
+              Check the correctness of the entered e-mail
             </p>
-          )} */}
+          )}
         </div>
+        <p className={s.bottomText}>
+          Dont’t have an account? <span className={s.signInLink} role="button" onClick={handleSignupClick}>Sign in!</span>{" "}
+        </p>
 
-          <Button className={s.signUp} type="submit">
-            Log in
-          </Button>
-
+        <Button className={s.signUp} type="submit">
+          Log in
+        </Button>
       </form>
     </div>
   );

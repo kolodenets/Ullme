@@ -43,7 +43,7 @@
   @media screen and (max-width: 767px) {
     // position: absolute;
     // bottom: 0;
-    max-width: 600px;
+    max-width: 500px;
     width: 100%;
     margin-right: 0px;
   }
@@ -56,10 +56,13 @@
 .modal__contentField {
   position: relative;
   background: $color-white;
-  border-radius: 16px;
+  border-radius: 4px;
   @media screen and (max-width: 767px) {
-    // position: absolute;
-    // bottom: 0;
+    border-radius: 16px;
+    width: 100%;
+  }
+  @media screen and (max-width: 500px) {
+    border-radius: 16px 16px 0 0;
     width: 100%;
   }
 }
@@ -76,13 +79,19 @@
   justify-content: center;
   top: 24px;
   right: 24px;
+  padding: 0;
   background: transparent;
-  width: 32px;
-  height: 32px;
+
   cursor: pointer;
   @include mobile-tablet {
     top: 15px;
     right: 15px;
+  }
+  img {
+    @include mobile-tablet {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   &:active {

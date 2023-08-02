@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import cn from "classnames";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { UseFormProps } from "react-hook-form";
 
 import Camera from "../../../public/assets/icons/cameraIcon.svg";
 import CameraBig from "../../../public/assets/icons/Camera120.svg";
@@ -15,7 +14,7 @@ import Button from "../../components/Button/Button";
 import { convertFile } from "../../shared/helpers/convertFile";
 import Popup from "../../components/Popup/Popup";
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
-import RegForm from "../../features/RegistrationForm/regForm";
+
 import { AppDispatch, RootState } from "../../store/store";
 import { toggleRegistration, toggleLogin } from "../../store/slices/formsSlice";
 import s from "./Upload.module.scss";
@@ -33,9 +32,6 @@ const UploadPage = () => {
   // const [uploadedPhoto1, setUploadedPhoto1] = useState<File | null>(null);
   // const [uploadedPhoto2, setUploadedPhoto2] = useState<File | null>(null);
 
-  const activeRegistration = useSelector(
-    (state: RootState) => state.forms.activeRegistration
-  );
   const activeThanksPopup = useSelector(
     (state: RootState) => state.popups.activeThanksPopup
   );
@@ -49,7 +45,6 @@ const UploadPage = () => {
 
   const [openLimitPopup, setOpenLimitPopup] = useState(false);
 
-  const regFormRef = useRef<UseFormProps<FormData>>(null);
   const navigate = useNavigate();
 
   const size = useWindowDimensions();
@@ -260,18 +255,6 @@ const UploadPage = () => {
             <Button className={s.signUp} onClick={handleSignupClick}>
               Sign Up
             </Button>
-          </div>
-        </Popup>
-        <Popup
-          active={activeRegistration}
-          className={s.customPopup}
-          onClose={() => {
-            dispatch(toggleRegistration(false));
-            (regFormRef as any)?.current?.resetForm();
-          }}
-        >
-          <div className={s.regPopup}>
-            <RegForm ref={regFormRef} />
           </div>
         </Popup>
         <Popup

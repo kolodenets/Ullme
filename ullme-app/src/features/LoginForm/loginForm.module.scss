@@ -27,7 +27,6 @@
   }
 
   .form__control {
-    margin-top: 18px;
     position: relative;
     @media screen and (max-width: 767px) {
       display: -webkit-box;
@@ -83,7 +82,7 @@
     margin-top: 5px;
     color: red;
     font-size: 12px;
-    display: none;
+    // display: none;
   }
   // input.right {
   //   border: 1px solid var(--green);
@@ -147,11 +146,11 @@
 }
 
 .signUp {
-  margin: 100px auto 0;
+  margin: 94px auto 0;
   width: 303px;
   height: 50px;
   @include mobile-tablet {
-    margin: 240px auto 0;
+    margin: 110px auto 0;
   }
 }
 
@@ -166,4 +165,18 @@
     cursor: pointer;
     background: none;
   }
+}
+.bottomText {
+  @include petraRegular16;
+  margin-top: 64px;
+   @include mobile-tablet {
+    margin-top: 110px;
+    font-weight: 500;
+    font-size: 14px;
+   }
+   span {
+    cursor: pointer;
+    color: $color-blue;
+   }
+
 }

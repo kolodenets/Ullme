@@ -3,16 +3,19 @@ import cn from "classnames";
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions.js";
 import MainLogo from "../../../public/assets/icons/ullme-web.svg";
 import MainLogoMob from "../../../public/assets/icons/ullme-mob.svg";
-import CloseBurger from "../../../public/assets/icons/closeBtn.svg";
+import CloseBurger from "../../../public/assets/icons/closeX44.svg";
 import Popup from "../../components/Popup/Popup.js";
 import { useSelector, useDispatch } from "react-redux";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import s from "./Header.module.scss";
 import LoginForm from "../LoginForm/loginForm.js";
-import { toggleLogin } from "../../store/slices/formsSlice.js";
+import RegForm from "../RegistrationForm/regForm.js";
+import { toggleLogin, toggleRegistration } from "../../store/slices/formsSlice.js";
 import { AppDispatch, RootState } from "../../store/store.js";
 import { UseFormProps } from "react-hook-form";
+import UserWeb from "../../../public/assets/icons/user20.svg";
+import UserMob from "../../../public/assets/icons/user16.svg";
 
 const Header = () => {
   const size = useWindowDimensions();
@@ -24,8 +27,12 @@ const Header = () => {
   const activeLogin = useSelector(
     (state: RootState) => state.forms.activeLogin
   );
+  const activeRegistration = useSelector(
+    (state: RootState) => state.forms.activeRegistration
+  );
   const dispatch: AppDispatch = useDispatch();
   const logFormRef = useRef<UseFormProps<FormData>>(null);
+  const regFormRef = useRef<UseFormProps<FormData>>(null);
   const navigateTo = (page: string) => {
     navigate(page);
   };
@@ -83,6 +90,10 @@ const Header = () => {
               </li>
             </ul>
           </nav>
+            <div className={s.loginContainer} role="button" onClick={() => dispatch(toggleLogin(true))}>
+              <img src={size.width > 768 ? UserWeb : UserMob} alt="avatar" />
+              <span>Log in</span>
+            </div>
           <button
             className={s.burgerButton}
             onClick={() => setBurgerMenuActive(true)}
@@ -171,15 +182,27 @@ const Header = () => {
         </div>
       </Popup>
       <Popup
-          active={activeLogin}
+        active={activeLogin}
+        className={s.customPopup}
+        onClose={() => {
+          dispatch(toggleLogin(false));
+          (logFormRef as any)?.current?.resetForm();
+        }}
+      >
+        <div className={s.logPopup}>
+          <LoginForm ref={logFormRef} />
+        </div>
+      </Popup>
+      <Popup
+          active={activeRegistration}
           className={s.customPopup}
           onClose={() => {
-            dispatch(toggleLogin(false));
-            (logFormRef as any)?.current?.resetForm();
+            dispatch(toggleRegistration(false));
+            (regFormRef as any)?.current?.resetForm();
           }}
         >
-          <div className={s.logPopup}>
-            <LoginForm ref={logFormRef} />
+          <div className={s.regPopup}>
+            <RegForm ref={regFormRef} />
           </div>
         </Popup>
     </header>

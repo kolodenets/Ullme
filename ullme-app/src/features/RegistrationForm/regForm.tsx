@@ -106,7 +106,7 @@ const RegForm = forwardRef((_, ref) => {
             Please input Name or delete this field.
           </span>
           {errors.username?.type === "required" && (
-            <p className={s.errorMsg}>Введите имя.</p>
+            <p className={s.errorMsg}>Name is required</p>
           )}
           {/* {errors.username?.type === "checkLength" && (
             <p className={s.errorMsg}>Имя должно содержать от 2 до 25 символов</p>
@@ -133,7 +133,6 @@ const RegForm = forwardRef((_, ref) => {
                 // pattern:
                 //   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
               })}
-              // placeholder="user_name@gmail.com"
             />
             <button type="button" onClick={handleClearEmail}>
               <img src={ClearField} alt="clear" />
@@ -144,52 +143,15 @@ const RegForm = forwardRef((_, ref) => {
             Please input Email or delete this field.
           </span>
           {errors.email?.type === "required" && (
-            <p className={s.errorMsg}>Введите адрес электронной почты.</p>
+            <p className={s.errorMsg}>Email is required</p>
           )}
-          {/* {errors.email?.type === "matchPattern" && (
-            <p className="errorMsg">
-              Проверьте правильность введения электронной почты.
+          {errors.email?.type === "matchPattern" && (
+            <p className={s.errorMsg}>
+              Check the correctness of the entered e-mail
             </p>
-          )} */}
+          )}
         </div>
 
-        {/* <div className="form__control">
-          <label>Пароль*</label>
-          <div
-            className={passwordVisibility ? "icon visible" : "icon hidden"}
-            onClick={() => setPasswordVisibility(!passwordVisibility)}
-          ></div>
-          <input
-            type={passwordVisibility ? "text" : "password"}
-            {...register("password", {
-              required: true,
-              validate: {
-                checkLength: (value) => value.length >= 7 && value.length <= 25,
-                matchPattern: (value) =>
-                  // /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s)?[\\\/\|.,'";>:<[\]{\}\(\)+~!?@#$%^&*_-]/.test(
-                  /^([a-zA-Z0-9\\/|.,'";>:<[\]{}()+~!?@#$%^&*_-])+$/.test(
-                    value
-                  ),
-              },
-            })}
-          />
-          <p className="password-helper">Не менее 7 символов</p>
-          {errors.password?.type === "required" && (
-            <p className="errorMsg">Требуется ввести пароль.</p>
-          )}
-          {errors.password?.type === "checkLength" && (
-            <p className="errorMsg">
-              Недостаточная длина пароля. Пароль должен содержать не менее 7
-              символов.
-            </p>
-          )}
-          {errors.password?.type === "matchPattern" && (
-            <p className="errorMsg">
-              Использование недопустимых знаков. Пароль может содержать только
-              латинские буквы, цифры, специальные символы
-            </p>
-          )}
-        </div> */}
         <div className={s.policyTerms}>
           <label htmlFor="policy-form" className={cn(s.checkBox)}>
             <img
