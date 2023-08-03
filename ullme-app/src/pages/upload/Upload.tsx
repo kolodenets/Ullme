@@ -233,7 +233,7 @@ const UploadPage = () => {
           </div>
           <Button
             className={s.checkSimilarity}
-            // disabled={isDisabled}
+            disabled={isDisabled}
             onClick={() => {
               const tryNumber = Number(localStorage.getItem("tryNumber")) ?? 1;
               if (tryNumber < 3) {
