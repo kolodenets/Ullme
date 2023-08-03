@@ -192,6 +192,7 @@
     gap: 4px;
     font-size: 14px;
     font-weight: 500;
+    align-self: center;
   }
 
   cursor: pointer;
@@ -268,8 +269,8 @@
   align-items: center;
   @include mobile-tablet {
     width: unset;
-    margin: 103px 0 94px;
-    padding: 0 33px;
+    margin: 59px 0 65px;
+    padding: 0 15px;
   }
   .popup__title {
     @include h1;
@@ -281,6 +282,7 @@
       font-size: 24px;
       margin-bottom: 32px;
       text-align: center;
+      max-width: 300px;
     }
   }
 
@@ -292,9 +294,10 @@
     max-width: 640px;
 
     @include mobile-tablet {
+      max-width: 324px;
       font-size: 18px;
       font-weight: 200;
-      margin-bottom: 48px;
+      margin-bottom: 32px;
     }
   }
 }
@@ -310,9 +313,10 @@
   margin-bottom: 44px;
 
   @include mobile-tablet {
-    width: 159px;
-    height: 159px;
+    width: 304px;
+    height: 350px;
     border-radius: 8px;
+    margin-bottom: 32px;
   }
   .photosWrapper {
     display: flex;
@@ -321,8 +325,8 @@
     padding-top: 20px;
     margin-bottom: 30px;
     @include mobile-tablet {
-      width: 98px;
-      margin: 23px auto 12px;
+      width: 234px;
+      margin: 38px auto 26px;
       padding: 0;
     }
   }
@@ -339,8 +343,8 @@
     // background-image: url("/public/assets/images/default.png");
     @include mobile-tablet {
       border: 0.35px solid #fff;
-      width: 52px;
-      height: 52px;
+      width: 125px;
+      height: 125px;
     }
   }
 
@@ -355,7 +359,7 @@
     transform: rotate(15deg);
     z-index: 5;
     @include mobile-tablet {
-      left: 45px;
+      left: 117px;
       top: 0;
     }
   }
@@ -368,7 +372,7 @@
     margin: 0 auto 30px;
 
     @include mobile-tablet {
-      gap: 4px;
+      gap: 10px;
       margin: 0 auto 8px;
     }
 
@@ -378,7 +382,7 @@
       color: $color-black-15;
       text-align: center;
       @include mobile-tablet {
-        font-size: 17px;
+        font-size: 48px;
       }
     }
   }
@@ -389,8 +393,9 @@
     background-color: $color-white-D9;
     border-radius: 100px;
     @include mobile-tablet {
-      width: 108px;
-      height: 3px;
+      border-radius: 83px;
+      width: 260px;
+      height: 7px;
     }
 
     .resultNumber {
@@ -398,8 +403,8 @@
       border-radius: 100px;
       background-color: $color-red;
       @include mobile-tablet {
-        height: 3px;
-        border-radius: 35px;
+        height: 7px;
+        border-radius: 83px;
       }
     }
   }
@@ -413,10 +418,12 @@
     line-height: 140%;
     font-weight: $fw-regular;
     opacity: 1;
+    margin-bottom: 0;
     @include mobile-tablet {
-      font-size: 6px;
+      font-size: 15px;
       font-weight: 200;
-      max-width: 122px;
+      line-height: 140%;
+      max-width: 288px;
       text-align: start;
     }
   }
@@ -428,14 +435,41 @@
 .sendLinkPopup {
   width: 822px;
   margin: 72px 85px 60px;
+  @include mobile-tablet {
+    width: unset;
+    margin: 58px 0 40px;
+  }
+  .popup__title {
+    @include mobile-tablet {
+      font-size: 28px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      max-width: unset;
+    }
+  }
   .popup__subtitle {
     max-width: unset;
   }
   .bottomContainer {
     display: flex;
     gap: 80px;
+    @include mobile-tablet {
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
   }
 }
 .card {
   margin-bottom: 56px;
+  @include mobile-tablet {
+    margin-bottom: 24px;
+  }
+}
+
+.customPopup {
+  @media screen and (width < 500px) {
+    padding: 0;
+    align-items: flex-end;
+  }
 }

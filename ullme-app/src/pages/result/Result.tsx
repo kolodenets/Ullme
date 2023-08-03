@@ -214,6 +214,7 @@ const ResultPage = () => {
         </div>
       </section>
       <Popup
+        className={s.customPopup}
         active={isSharePopupOpen}
         onClose={() => dispatch(toggleSharePopup(false))}
       >
@@ -264,6 +265,7 @@ const ResultPage = () => {
         </div>
       </Popup>
       <Popup
+        className={s.customPopup}
         active={isPostResultPopupOpen}
         onClose={() => dispatch(togglePostResultPopup(false))}
       >
@@ -316,6 +318,7 @@ const ResultPage = () => {
         </div>
       </Popup>
       <Popup
+        className={s.customPopup}
         active={isSendLinkPopupOpen}
         onClose={() => dispatch(toggleSendLinkPopup(false))}
       >
