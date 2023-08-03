@@ -224,6 +224,7 @@
 
   @include mobile-tablet {
     gap: 52px;
+    margin-top: 52px;
     margin-bottom: 0;
   }
 }
@@ -248,10 +249,13 @@
   height: 50px;
   @include mobile-tablet {
     display: block;
-    margin: 56px auto 74px;
+    margin: 56px auto 76px;
   }
 }
 .slider {
   width: 420px;
   align-self: flex-start;
+  @include mobile-tablet {
+    width: 160px;
+  }
 }
