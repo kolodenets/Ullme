@@ -7,6 +7,7 @@ import "swiper/css";
 import "./pagination.scss";
 import s from "./UISwiper.module.scss";
 import cn from "classnames";
+import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
 
 interface UISwiperProps {
   photo1: string | null;
@@ -24,6 +25,7 @@ const UISwiper: FC<UISwiperProps> = ({
   percentage,
   resultText = defaultText,
 }) => {
+  const size = useWindowDimensions()
   return (
     <>
       <Swiper
@@ -31,7 +33,7 @@ const UISwiper: FC<UISwiperProps> = ({
         pagination={{ clickable: true }}
         slidesPerView={"auto"}
         // centeredSlides={true}
-        spaceBetween={30}
+        spaceBetween={size.width >768 ? 30 : 8}
         // allowTouchMove={false}
         // loop={true}
         // className="mySwiper"
