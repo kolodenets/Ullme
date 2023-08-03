@@ -63,13 +63,11 @@
 .photosWrapper {
   display: flex;
   position: relative;
-  width: 520px;
+  width: 470px;
   margin: 0 auto 48px;
-  padding-left: 20px;
   @include mobile-tablet {
-    width: 320px;
+    width: 280px;
     margin: 0 auto 30px;
-    padding-left: 20px;
   }
 }
 
@@ -78,13 +76,15 @@
   width: 240px;
   height: 240px;
   border-radius: 200px;
+  border: 1px solid #bdbcbc;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  // background-image: url("/public/assets/images/default.png");
+  background-image: url("/public/assets/images/new1.png");
   @include mobile-tablet {
     width: 150px;
     height: 150px;
+    border: 1px solid #fff;
   }
 }
 
@@ -94,11 +94,11 @@
 .uploadedImage2 {
   position: absolute;
   top: 0;
-  left: 232px;
+  left: 228px;
   transform: rotate(15deg);
-  z-index: 5;
+  z-index: 3;
   @include mobile-tablet {
-    left: 155px;
+    left: 141px;
   }
 }
 
