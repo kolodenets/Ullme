@@ -259,3 +259,183 @@
     width: 160px;
   }
 }
+
+.sharePopup, .postResultPopup, .sendLinkPopup {
+  width: 818px;
+  margin: 72px 87px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include mobile-tablet {
+    width: unset;
+    margin: 103px 0 94px;
+    padding: 0 33px;
+  }
+  .popup__title {
+    @include h1;
+    color: $color-black-15;
+    font-weight: $fw-bold;
+    font-size: 48px;
+    margin-bottom: 12px;
+    @include mobile-tablet {
+      font-size: 24px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+  }
+
+  .popup__subtitle {
+    @include petraRegular16;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 32px;
+    max-width: 640px;
+
+    @include mobile-tablet {
+      font-size: 18px;
+      font-weight: 200;
+      margin-bottom: 48px;
+    }
+  }
+}
+
+.cardWrapper {
+  width: 416px;
+  height: 416px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  border: 0.5px solid $color-blue;
+  background-color: #fafafa;
+  margin-bottom: 44px;
+
+  @include mobile-tablet {
+    width: 159px;
+    height: 159px;
+    border-radius: 8px;
+  }
+  .photosWrapper {
+    display: flex;
+    position: relative;
+    width: 328px;
+    padding-top: 20px;
+    margin-bottom: 30px;
+    @include mobile-tablet {
+      width: 98px;
+      margin: 23px auto 12px;
+      padding: 0;
+    }
+  }
+
+  .uploadedImage1,
+  .uploadedImage2 {
+    width: 168px;
+    height: 168px;
+    border-radius: 50%;
+    border: 0.7px solid #bdbcbc;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-image: url("/public/assets/images/default.png");
+    @include mobile-tablet {
+      border: 0.35px solid #fff;
+      width: 52px;
+      height: 52px;
+    }
+  }
+
+  .uploadedImage1 {
+    transform: rotate(-15deg);
+  }
+  .uploadedImage2 {
+    position: absolute;
+    top: 0;
+    left: 157px;
+    top: 20px;
+    transform: rotate(15deg);
+    z-index: 5;
+    @include mobile-tablet {
+      left: 45px;
+      top: 0;
+    }
+  }
+
+  .resultContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+    margin: 0 auto 30px;
+
+    @include mobile-tablet {
+      gap: 4px;
+      margin: 0 auto 8px;
+    }
+
+    p {
+      @include h1;
+      font-size: 48px;
+      color: $color-black-15;
+      text-align: center;
+      @include mobile-tablet {
+        font-size: 17px;
+      }
+    }
+  }
+
+  .bar {
+    width: 329px;
+    height: 13px;
+    background-color: $color-white-D9;
+    border-radius: 100px;
+    @include mobile-tablet {
+      width: 108px;
+      height: 3px;
+    }
+
+    .resultNumber {
+      height: 13px;
+      border-radius: 100px;
+      background-color: $color-red;
+      @include mobile-tablet {
+        height: 3px;
+        border-radius: 35px;
+      }
+    }
+  }
+
+  .resultText {
+    color: $color-black-15;
+    max-width: 363px;
+    align-self: center;
+    text-align: start;
+    font-size: 14px;
+    line-height: 140%;
+    font-weight: $fw-regular;
+    opacity: 1;
+    @include mobile-tablet {
+      font-size: 6px;
+      font-weight: 200;
+      max-width: 122px;
+      text-align: start;
+    }
+  }
+}
+.postResultPopup {
+  width: 862px;
+  margin: 72px 65px 32px;
+}
+.sendLinkPopup {
+  width: 822px;
+  margin: 72px 85px 60px;
+  .popup__subtitle {
+    max-width: unset;
+  }
+  .bottomContainer {
+    display: flex;
+    gap: 80px;
+  }
+}
+.card {
+  margin-bottom: 56px;
+}

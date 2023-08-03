@@ -22,9 +22,8 @@
   .photosWrapper {
     display: flex;
     position: relative;
-    width: 320px;
+    width: 328px;
     padding-top: 20px;
-    padding-left: 20px;
     margin-bottom: 30px;
     @include mobile-tablet {
       width: 98px;
@@ -56,10 +55,10 @@
   .uploadedImage2 {
     position: absolute;
     top: 0;
-    left: 170px;
+    left: 157px;
     top: 20px;
     transform: rotate(15deg);
-    z-index: 5;
+    z-index: 3;
     @include mobile-tablet {
       left: 45px;
       top: 0;
@@ -112,8 +111,9 @@
 
   .resultText {
     color: $color-black-15;
-    max-width: 400px;
+    max-width: 363px;
     align-self: center;
+    text-align: start;
     font-size: 14px;
     line-height: 140%;
     font-weight: $fw-regular;
