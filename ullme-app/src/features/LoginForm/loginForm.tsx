@@ -1,11 +1,9 @@
 import { forwardRef, useImperativeHandle } from "react";
 import { useForm } from "react-hook-form";
-import cn from "classnames";
 
 import Button from "../../components/Button/Button";
 import RedStar from "../../../public/assets/icons/littleRedStar.svg";
-import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
-import { loginUser } from "../../shared/api/auth";
+// import { loginUser } from "../../shared/api/auth";
 import { AppDispatch } from "../../store/store";
 import { toggleLogin, toggleRegistration } from "../../store/slices/formsSlice";
 import { useDispatch } from "react-redux";
@@ -23,7 +21,7 @@ export interface LoginParams {
 // } from "../../store/slices/alertsSlice";
 
 const LoginForm = forwardRef((_, ref) => {
-  const size = useWindowDimensions();
+
   const dispatch: AppDispatch = useDispatch();
 
   const {
@@ -46,8 +44,8 @@ const LoginForm = forwardRef((_, ref) => {
     },
   }));
 
-  const onSubmit = async (data: LoginParams) => {
-    const result = await loginUser(data);
+  const onSubmit = async () => {
+    // const result = await loginUser(data);
     dispatch(toggleLogin(false));
 
     reset();

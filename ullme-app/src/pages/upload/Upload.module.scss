@@ -146,12 +146,16 @@
   }
 }
 .uploadedImage {
-  width: 150px;
-  height: 150px;
-  border-radius: 200px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  @include mobile-tablet {
+    width: 150px;
+    height: 150px;
+  }
 }
 
 .hidden {
@@ -244,7 +248,7 @@
   height: 50px;
 }
 .customPopup {
-  @media screen and (width < 500px){
+  @media screen and (width < 500px) {
     padding: 0;
     align-items: flex-end;
   }

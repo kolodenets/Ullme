@@ -37,17 +37,13 @@ const Header = () => {
     navigate(page);
   };
 
-  const handleBurgerLinkClick = (page: string) => {
-    setBurgerMenuActive(false);
-    navigateTo(page);
-  };
-
   return (
     <header className={s.header}>
       <div className={cn("container")}>
         <div className={s.flexContainer}>
           <img
             src={size.width > 768 ? MainLogo : MainLogoMob}
+            className={s.logoImg}
             alt="logo"
             onClick={() => navigateTo("/")}
           />
@@ -156,7 +152,7 @@ const Header = () => {
           </ul>
         </div>
       </div>
-      <Popup active={isPopupActive} onClose={() => setIsPopupActive(false)}>
+      <Popup active={isPopupActive} onClose={() => setIsPopupActive(false)} contentClass={s.rounded}>
         <div className={s.popup}>
           <h1 className={s.popup__title}>ULLME</h1>
           <h4 className={s.popup__subtitle}>AI service knows the answer!</h4>

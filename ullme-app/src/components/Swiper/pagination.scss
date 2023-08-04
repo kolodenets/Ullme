@@ -43,7 +43,8 @@
   left: 0;
   width: 1170px;
   @include mobile-tablet {
-    width: 375px;
+    width: 100vw;
+    left: -15px;
     bottom:  -32px;
   }
 }

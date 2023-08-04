@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import cn from "classnames";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -118,7 +118,7 @@ const UploadPage = () => {
                       dispatch(setPhoto1(convertFile(e.target.files![0])));
                       uploadPhoto(e.target.files[0]).then((result) => {
                         if (!result?.status) {
-                          setError1(true);
+                          // setError1(true);
                         } else {
                           // setUploadedPhoto1(e.target.files![0]);
                           // setIsPhoto1(true);
@@ -174,7 +174,7 @@ const UploadPage = () => {
                       dispatch(setPhoto2(convertFile(e.target.files![0])));
                       uploadPhoto(e.target.files[0]).then((result) => {
                         if (!result?.status) {
-                          setError2(true);
+                          // setError2(true);
                         } else {
                           // setUploadedPhoto2(e.target.files![0]);
                           // setIsPhoto2(true);

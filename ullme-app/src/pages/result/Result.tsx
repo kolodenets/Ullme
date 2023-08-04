@@ -13,6 +13,7 @@ import ShareNetwork32 from "../../../public/assets/icons/ShareNetwork32.svg";
 import ShareNetwork20 from "../../../public/assets/icons/ShareNetwork20.svg";
 import Copy20 from "../../../public/assets/svg/copyToClipboard20.svg";
 import Copy32 from "../../../public/assets/svg/copyToClipboard32.svg";
+import CardImg from "../../../public/assets/images/forCard.png";
 
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
 import s from "./Result.module.scss";
@@ -65,35 +66,39 @@ const ResultPage = () => {
   const printPercents = (percent: number) => {
     let current = 0;
     setTimeout(function go() {
-      setPercentageToShow(current);
-      if (current == percent) {
+      setPercentageToShow(Math.floor(current));
+      if (current >= percent) {
         setVisibleText(true);
       }
+      // if (current < percent) {
+      //   if (current > 0.6 * percent) {
+      //     setTimeout(go, 100);
+      //   } else if (current > 0.75 * percent) {
+      //     setTimeout(go, 50 + current * 2);
+      //   } else if (current > 0.85 * percent) {
+      //     setTimeout(go, 50 + current * 3);
+      //   } else {
+      //     setTimeout(go, 25);
+      //   }
+      // }
       if (current < percent) {
-        if (current > 0.6 * percent) {
-          setTimeout(go, 100);
-        } else if (current > 0.75 * percent) {
-          setTimeout(go, 50 + current * 2);
-        } else if (current > 0.85 * percent) {
-          setTimeout(go, 50 + current * 3);
-        } else {
-          setTimeout(go, 50);
+          setTimeout(go, 25);
         }
-      }
-      current++;
-    }, 50);
+      current += percent/(100 + Math.sqrt(current))
+      // current++;
+    }, 25);
   };
 
   useEffect(() => {
-    // setTimeout(() => {
-    //   setPercentage(0.86)
-    // }, 1500)
-    getResult();
+    setTimeout(() => {
+      setPercentage(0.86)
+    }, 1000)
+    // getResult();
   }, []);
 
   useEffect(() => {
     if (percentage) {
-      printPercents(Math.floor(percentage));
+      printPercents(Math.floor(percentage*100));
     }
   }, [percentage]);
 
@@ -167,6 +172,7 @@ const ResultPage = () => {
               photo1={photo1}
               photo2={photo2}
               percentage={percentageToShow}
+              isVisibleText={visibleText}
             />
           </div>
 
@@ -328,8 +334,20 @@ const ResultPage = () => {
             Do you like Ullme service? <br /> So send a link to the service to
             your friends and acquaintances
           </div>
+          {/* <div className={s.card}>
+            <img src="./assets/svg/UllmeCard.svg" alt="card" />
+          </div> */}
           <div className={s.card}>
-            <img src="../../../public/assets/images/UllmeCard.png" alt="card" />
+            <img src={CardImg} alt="" />
+            <div className={s.card__inner}>
+              <p className={s.card__title}>ULLME</p>
+              <p className={s.card__subtitle}>AI service knows the answer!</p>
+              <p className={s.card__text}>
+                Is an artificial intelligence soft developed and trained on the
+                basis of many years of scientific research <br /><br /> Scientists have
+                proven that people who look like
+              </p>
+            </div>
           </div>
           <div className={s.bottomContainer}>
             <div
@@ -339,10 +357,7 @@ const ResultPage = () => {
                 dispatch(toggleSendLinkPopup(true));
               }}
             >
-              <img
-                src={size.width < 768 ? Copy20 : Copy32}
-                alt="img"
-              />
+              <img src={size.width < 768 ? Copy20 : Copy32} alt="img" />
               <span>Copy the link Ullme </span>
             </div>
             <SocialNetworks

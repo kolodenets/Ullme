@@ -241,7 +241,7 @@ const Home = () => {
           </Button>
         )}
       </section>
-      <Popup active={isPopupOPen} onClose={() => setIsPopupOpen(false)}>
+      <Popup active={isPopupOPen} onClose={() => setIsPopupOpen(false)} contentClass={s.rounded}>
         <div className={s.popup}>
           <h1 className={s.popup__title}>ULLME</h1>
           <h4 className={s.popup__subtitle}>AI service knows the answer!</h4>

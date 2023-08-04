@@ -22,7 +22,7 @@
     gap: 0;
     justify-content: space-between;
   }
-  img {
+  .logoImg {
     cursor: pointer;
     @include mobile-tablet {
       padding-left: 14px;
@@ -213,6 +213,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  align-items: center;
   cursor: pointer;
 
   font-size: 20px;
@@ -236,3 +237,8 @@
     padding: 0 25px;
   }
 }
+.rounded {
+  @media screen and (width < 500px) {
+    border-radius: 16px;
+  }
+} 

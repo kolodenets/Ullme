@@ -1,5 +1,5 @@
 import { forwardRef, useState, useImperativeHandle } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import cn from "classnames";
 // import { useDispatch } from "react-redux";
 
@@ -11,7 +11,7 @@ import CheckboxChecked32 from "../../../public/assets/icons/checkbox-checked32.s
 import ClearField from "../../../public/assets/icons/clearField.svg";
 import RedStar from "../../../public/assets/icons/littleRedStar.svg";
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
-import { registerUser } from "../../shared/api/auth";
+// import { registerUser } from "../../shared/api/auth";
 import { AppDispatch } from "../../store/store";
 import { toggleRegistration } from "../../store/slices/formsSlice";
 import { toggleThanksPopup } from "../../store/slices/popupsSlice";
@@ -38,8 +38,6 @@ const RegForm = forwardRef((_, ref) => {
   const {
     register,
     handleSubmit,
-    control,
-    getValues,
     reset,
     resetField,
     formState: { errors },
@@ -58,8 +56,8 @@ const RegForm = forwardRef((_, ref) => {
     },
   }));
 
-  const onSubmit = async (data: RegistrationParams) => {
-    const result = await registerUser(data);
+  const onSubmit = async () => {
+    // const result = await registerUser(data);
     dispatch(toggleRegistration(false));
     dispatch(toggleThanksPopup(true));
     reset();

@@ -1,6 +1,6 @@
-import axios, { AxiosPromise } from "axios";
+import axios from "axios";
 import { getBase64 } from "../helpers/getBase64";
-import { json } from "react-router-dom";
+
 export const host = 'http://127.0.0.1'
 
 export const API_URL = `${host}/photo/upload/`;

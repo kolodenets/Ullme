@@ -14,6 +14,7 @@ interface UISwiperProps {
   photo2: string | null;
   percentage: number;
   resultText?: string;
+  isVisibleText: boolean
 }
 
 const defaultText =
@@ -24,6 +25,7 @@ const UISwiper: FC<UISwiperProps> = ({
   photo2,
   percentage,
   resultText = defaultText,
+  isVisibleText
 }) => {
   const size = useWindowDimensions()
   return (
@@ -61,7 +63,7 @@ const UISwiper: FC<UISwiperProps> = ({
               </div>
             </div>
 
-            <p className={cn(s.resultText)}>{resultText}</p>
+            <p className={cn(s.resultText, { [s.visible]: isVisibleText })}>{resultText}</p>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -87,7 +89,7 @@ const UISwiper: FC<UISwiperProps> = ({
               </div>
             </div>
 
-            <p className={cn(s.resultText)}>{resultText}</p>
+            <p className={cn(s.resultText, { [s.visible]: isVisibleText })}>{resultText}</p>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -113,7 +115,7 @@ const UISwiper: FC<UISwiperProps> = ({
               </div>
             </div>
 
-            <p className={cn(s.resultText)}>{resultText}</p>
+            <p className={cn(s.resultText, { [s.visible]: isVisibleText })}>{resultText}</p>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -139,7 +141,7 @@ const UISwiper: FC<UISwiperProps> = ({
               </div>
             </div>
 
-            <p className={cn(s.resultText, s.white)}>{resultText}</p>
+            <p className={cn(s.resultText, s.white, {[s.visible]: isVisibleText})}>{resultText}</p>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -165,7 +167,7 @@ const UISwiper: FC<UISwiperProps> = ({
               </div>
             </div>
 
-            <p className={cn(s.resultText)}>{resultText}</p>
+            <p className={cn(s.resultText, { [s.visible]: isVisibleText })}>{resultText}</p>
           </div>
         </SwiperSlide>
       </Swiper>
