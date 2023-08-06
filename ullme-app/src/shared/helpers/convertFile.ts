@@ -1,4 +1,4 @@
-export const convertFile = (file: File): string => {
+export const convertFile = (file: File| Blob): string => {
   const url = URL.createObjectURL(file);
   return `url(${url})`;
 };

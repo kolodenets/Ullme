@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import cn from "classnames";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import heic2any from "heic2any";
 
 import Camera from "../../../public/assets/icons/cameraIcon.svg";
 import CameraBig from "../../../public/assets/icons/Camera120.svg";
@@ -25,23 +26,15 @@ import { setPhoto1, setPhoto2 } from "../../store/slices/photosSlice";
 
 const UploadPage = () => {
   const [error1, setError1] = useState(false);
-  // const [isPhoto1, setIsPhoto1] = useState(false);
   const [error2, setError2] = useState(false);
-  // const [isPhoto2, setIsPhoto2] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [policyChecked, setPolicyChecked] = useState(false);
-  // const [uploadedPhoto1, setUploadedPhoto1] = useState<File | null>(null);
-  // const [uploadedPhoto2, setUploadedPhoto2] = useState<File | null>(null);
 
   const activeThanksPopup = useSelector(
     (state: RootState) => state.popups.activeThanksPopup
   );
-  const uploadedPhoto1 = useSelector(
-    (state: RootState) => state.photos.photo1
-  );
-  const uploadedPhoto2 = useSelector(
-    (state: RootState) => state.photos.photo2
-  );
+  const uploadedPhoto1 = useSelector((state: RootState) => state.photos.photo1);
+  const uploadedPhoto2 = useSelector((state: RootState) => state.photos.photo2);
   const dispatch: AppDispatch = useDispatch();
 
   const [openLimitPopup, setOpenLimitPopup] = useState(false);
@@ -114,23 +107,30 @@ const UploadPage = () => {
                   name="file-upload1"
                   id="file-upload1"
                   style={{ display: "none" }}
-                  onChange={(e) => {
+                  onChange={async (e) => {
                     if (e.target.files) {
-                      dispatch(setPhoto1(convertFile(e.target.files![0])));
-                      uploadPhoto(e.target.files[0]).then((result) => {
+                      let photo: Blob | Blob[] | File = e.target.files![0];
+                      if (
+                        photo.type === "" ||
+                        photo.type === "image/heic" ||
+                        photo.type === "image/heif" ||
+                        photo.type === "image/heif-sequence" ||
+                        photo.type === "image/heic-sequence"
+                      ) {
+                        photo = await heic2any({
+                          blob: photo,
+                          toType: "image/jpeg",
+                          quality: 95
+                        });
+                      }
+                      dispatch(setPhoto1(convertFile(photo as Blob)));
+                      uploadPhoto(photo as Blob).then((result) => {
                         if (!result?.status) {
                           setError1(true);
                         } else {
-                          // setUploadedPhoto1(e.target.files![0]);
-                          // setIsPhoto1(true);
                           setError1(false);
-                          dispatch(setPhoto1(convertFile(e.target.files![0])));
+                          dispatch(setPhoto1(convertFile(photo as Blob)));
                           dispatch(setToken1(result.data.token));
-                          // localStorage.setItem(
-                          //   "photo1",
-                          //   convertFile(e.target.files![0])
-                          // );
-                          // localStorage.setItem("token1", result.data.token);
                         }
                       });
                     }
@@ -170,23 +170,29 @@ const UploadPage = () => {
                   name="file-upload2"
                   id="file-upload2"
                   style={{ display: "none" }}
-                  onChange={(e) => {
+                  onChange={async (e) => {
                     if (e.target.files) {
-                      dispatch(setPhoto2(convertFile(e.target.files![0])));
-                      uploadPhoto(e.target.files[0]).then((result) => {
+                      let photo: Blob | Blob[] | File = e.target.files![0];
+                      if (
+                        photo.type === "" ||
+                        photo.type === "image/heic" ||
+                        photo.type === "image/heif" ||
+                        photo.type === "image/heif-sequence" ||
+                        photo.type === "image/heic-sequence"
+                      ) {
+                        photo = await heic2any({
+                          blob: photo,
+                          toType: "image/jpeg",
+                        });
+                      }
+                      dispatch(setPhoto2(convertFile(photo as Blob)));
+                      uploadPhoto(photo as Blob).then((result) => {
                         if (!result?.status) {
                           setError2(true);
                         } else {
-                          // setUploadedPhoto2(e.target.files![0]);
-                          // setIsPhoto2(true);
                           setError2(false);
-                          dispatch(setPhoto2(convertFile(e.target.files![0])));
+                          dispatch(setPhoto2(convertFile(photo as Blob)));
                           dispatch(setToken2(result.data.token));
-                          // localStorage.setItem(
-                          //   "photo2",
-                          //   convertFile(e.target.files![0])
-                          // );
-                          // localStorage.setItem("token2", result.data.token);
                         }
                       });
                     }

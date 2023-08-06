@@ -10,7 +10,7 @@ export interface Response {
 
 }
 
-export async function uploadPhoto(photo: File) {
+export async function uploadPhoto(photo: File | Blob) {
   const b64_im = await getBase64(photo);
   const data = JSON.stringify({
     base64_image: b64_im,
