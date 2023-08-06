@@ -23,7 +23,7 @@ const Header = () => {
   const [languageItemActive, setLanguageItemActive] = useState(1);
   const [burgerMenuActive, setBurgerMenuActive] = useState(false);
   const [isPopupActive, setIsPopupActive] = useState(false);
-  const [email, setEmail] = useState<string | undefined>(undefined)
+  const [email, setEmail] = useState<string | null>(null)
   const userMail = localStorage.getItem('mail')
 
   const navigate = useNavigate();
@@ -44,13 +44,19 @@ const Header = () => {
     const result = await logoutUser()
     if(result?.status === 200) {
       localStorage.removeItem('mail')
+      setEmail(null)
+    }
+  }
+  const handleAuthClick = () => {
+    if(userMail) {
+      logout()
+    } else {
+      dispatch(toggleLogin(true))
     }
   }
 
   useEffect(() => {
-    if(userMail) {
-      setEmail(userMail)
-    }
+    setEmail(userMail)
   }, [userMail])
 
   return (
@@ -102,9 +108,9 @@ const Header = () => {
               </li>
             </ul>
           </nav>
-            <div className={s.loginContainer} role="button" onClick={() => dispatch(toggleLogin(true))}>
+            <div className={s.loginContainer} role="button" onClick={handleAuthClick}>
               <img src={size.width > 768 ? UserWeb : UserMob} alt="avatar" />
-              {email ? <span role="button" onClick={logout}>{email}</span> : <span>Log in</span>}
+              {email ? <span>{email}</span> : <span>Log in</span>}
             </div>
           <button
             className={s.burgerButton}

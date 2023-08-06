@@ -5,7 +5,7 @@ import { LoginParams } from "../../features/LoginForm/loginForm";
 
 const API_url_reg = `${host}/auth/register/`;
 const API_url_login = `${host}/auth/login/`;
-const API_url_logout = `${host}/auth/login/`;
+const API_url_logout = `${host}/auth/logout/`;
 
 export async function registerUser(params: RegistrationParams) {
   const { email, username, password } = params;
