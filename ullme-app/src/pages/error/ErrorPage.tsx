@@ -8,7 +8,9 @@ const ErrorPage = () => {
           <img src={ErrorImage} alt="error" />
         </div>
         <p className={s.text}>Try the comparison later or contact technical support.</p>
-        <div className={s.support}>Technical support contact</div>
+        <div className={s.support}>
+          <a href="mailto:contact@ullme.com">Technical support contact</a>
+          </div>
       </div>
     </main>
   );

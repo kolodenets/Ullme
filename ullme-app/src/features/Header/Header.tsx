@@ -6,7 +6,7 @@ import MainLogoMob from "../../../public/assets/icons/ullme-mob.svg";
 import CloseBurger from "../../../public/assets/icons/closeX44.svg";
 import Popup from "../../components/Popup/Popup.js";
 import { useSelector, useDispatch } from "react-redux";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import s from "./Header.module.scss";
 import LoginForm from "../LoginForm/loginForm.js";
@@ -16,12 +16,15 @@ import { AppDispatch, RootState } from "../../store/store.js";
 import { UseFormProps } from "react-hook-form";
 import UserWeb from "../../../public/assets/icons/user20.svg";
 import UserMob from "../../../public/assets/icons/user16.svg";
+import { logoutUser } from "../../shared/api/auth.js";
 
 const Header = () => {
   const size = useWindowDimensions();
   const [languageItemActive, setLanguageItemActive] = useState(1);
   const [burgerMenuActive, setBurgerMenuActive] = useState(false);
   const [isPopupActive, setIsPopupActive] = useState(false);
+  const [email, setEmail] = useState<string | undefined>(undefined)
+  const userMail = localStorage.getItem('mail')
 
   const navigate = useNavigate();
   const activeLogin = useSelector(
@@ -36,6 +39,19 @@ const Header = () => {
   const navigateTo = (page: string) => {
     navigate(page);
   };
+
+  const logout = async () => {
+    const result = await logoutUser()
+    if(result?.status === 200) {
+      localStorage.removeItem('mail')
+    }
+  }
+
+  useEffect(() => {
+    if(userMail) {
+      setEmail(userMail)
+    }
+  }, [userMail])
 
   return (
     <header className={s.header}>
@@ -56,7 +72,7 @@ const Header = () => {
                 About Us
               </li>
               <li className={cn(s.navbar__menu_item)}>
-                <a href="mailto:ullme@ullme.com"></a>ullme@ullme.com
+                <a href="mailto:contact@ullme.com">contact@ullme.com</a>
               </li>
             </ul>
             <ul className={s.navbar__languages}>
@@ -88,7 +104,7 @@ const Header = () => {
           </nav>
             <div className={s.loginContainer} role="button" onClick={() => dispatch(toggleLogin(true))}>
               <img src={size.width > 768 ? UserWeb : UserMob} alt="avatar" />
-              <span>Log in</span>
+              {email ? <span role="button" onClick={logout}>{email}</span> : <span>Log in</span>}
             </div>
           <button
             className={s.burgerButton}
@@ -147,7 +163,7 @@ const Header = () => {
               About Us
             </li>
             <li className={cn(s.navbar__menu_item)}>
-              <a href="mailto:ullme@ullme.com"></a>ullme@ullme.com
+              <a href="mailto:contact@ullme.com">contact@ullme.com</a>
             </li>
           </ul>
         </div>

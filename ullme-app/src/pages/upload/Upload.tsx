@@ -10,6 +10,7 @@ import Checkbox32 from "../../../public/assets/icons/checkbox32.svg";
 import CheckboxChecked from "../../../public/assets/icons/checkbox-checked.svg";
 import CheckboxChecked32 from "../../../public/assets/icons/checkbox-checked32.svg";
 import { uploadPhoto } from "../../shared/api/upload";
+
 import Button from "../../components/Button/Button";
 import { convertFile } from "../../shared/helpers/convertFile";
 import Popup from "../../components/Popup/Popup";
@@ -118,7 +119,7 @@ const UploadPage = () => {
                       dispatch(setPhoto1(convertFile(e.target.files![0])));
                       uploadPhoto(e.target.files[0]).then((result) => {
                         if (!result?.status) {
-                          // setError1(true);
+                          setError1(true);
                         } else {
                           // setUploadedPhoto1(e.target.files![0]);
                           // setIsPhoto1(true);
@@ -174,7 +175,7 @@ const UploadPage = () => {
                       dispatch(setPhoto2(convertFile(e.target.files![0])));
                       uploadPhoto(e.target.files[0]).then((result) => {
                         if (!result?.status) {
-                          // setError2(true);
+                          setError2(true);
                         } else {
                           // setUploadedPhoto2(e.target.files![0]);
                           // setIsPhoto2(true);
@@ -236,7 +237,7 @@ const UploadPage = () => {
             disabled={isDisabled}
             onClick={() => {
               const tryNumber = Number(localStorage.getItem("tryNumber")) ?? 1;
-              if (tryNumber < 3) {
+              if (tryNumber < 100) {
                 navigate("/result");
                 localStorage.setItem("tryNumber", `${tryNumber + 1}`);
               } else {

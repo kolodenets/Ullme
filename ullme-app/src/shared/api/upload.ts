@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getBase64 } from "../helpers/getBase64";
 
-export const host = 'http://127.0.0.1'
+export const host = 'https://dev.ullme.com'
 
 export const API_URL = `${host}/photo/upload/`;
 
@@ -20,6 +20,7 @@ export async function uploadPhoto(photo: File) {
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
         withCredentials: true,
+        "Access-Control-Allow-Origin": "*"
       },
     });
     return result;

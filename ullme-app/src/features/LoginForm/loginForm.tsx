@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import ClearField from "../../../public/assets/icons/clearField.svg";
 
 import s from "./loginForm.module.scss";
+import { loginUser } from "../../shared/api/auth";
 export interface LoginParams {
   email: string;
   password: string;
@@ -44,13 +45,14 @@ const LoginForm = forwardRef((_, ref) => {
     },
   }));
 
-  const onSubmit = async () => {
-    // const result = await loginUser(data);
+  const onSubmit = async (data: LoginParams) => {
+    const result = await loginUser(data);
+    console.log(result?.data)
     dispatch(toggleLogin(false));
-
     reset();
-    // if(result?.data) {
-    // }
+    if(result?.data) {
+      localStorage.setItem('mail', data.email)
+    }
   };
 
   const handleClearEmail = () => resetField("email");

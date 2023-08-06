@@ -14,6 +14,7 @@ import ShareNetwork20 from "../../../public/assets/icons/ShareNetwork20.svg";
 import Copy20 from "../../../public/assets/svg/copyToClipboard20.svg";
 import Copy32 from "../../../public/assets/svg/copyToClipboard32.svg";
 import CardImg from "../../../public/assets/images/forCard.png";
+import { checkAttempts } from "../../shared/api/checkAttempts";
 
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
 import s from "./Result.module.scss";
@@ -59,7 +60,7 @@ const ResultPage = () => {
   const getResult = async () => {
     if (mainToken && compareToken) {
       const result = await checkSimilarity(mainToken, compareToken);
-      setPercentage(result?.data.match_percentage * 100);
+      setPercentage(result?.data.match_percentage);
     }
   };
 
@@ -82,23 +83,29 @@ const ResultPage = () => {
       //   }
       // }
       if (current < percent) {
-          setTimeout(go, 25);
-        }
-      current += percent/(100 + Math.sqrt(current))
+        setTimeout(go, 25);
+      }
+      current += percent / (100 + Math.sqrt(current));
       // current++;
     }, 25);
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      setPercentage(0.86)
-    }, 1000)
+    const receiveResult = async () => {
+      await checkAttempts();
+      getResult();
+    };
+    // setTimeout(() => {
+    //   setPercentage(0.86)
+    // }, 1000)
+    receiveResult()
+    // checkAttempts();
     // getResult();
   }, []);
 
   useEffect(() => {
     if (percentage) {
-      printPercents(Math.floor(percentage*100));
+      printPercents(Math.floor(percentage));
     }
   }, [percentage]);
 
@@ -344,8 +351,8 @@ const ResultPage = () => {
               <p className={s.card__subtitle}>AI service knows the answer!</p>
               <p className={s.card__text}>
                 Is an artificial intelligence soft developed and trained on the
-                basis of many years of scientific research <br /><br /> Scientists have
-                proven that people who look like
+                basis of many years of scientific research <br />
+                <br /> Scientists have proven that people who look like
               </p>
             </div>
           </div>

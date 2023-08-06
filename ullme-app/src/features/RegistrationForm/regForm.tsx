@@ -17,11 +17,12 @@ import { toggleRegistration } from "../../store/slices/formsSlice";
 import { toggleThanksPopup } from "../../store/slices/popupsSlice";
 import s from "./form.module.scss";
 import { useDispatch } from "react-redux";
+import { registerUser } from "../../shared/api/auth";
 
 export interface RegistrationParams {
   email: string;
   username: string;
-  password: string;
+  password: string | number;
 }
 
 // import {
@@ -45,7 +46,7 @@ const RegForm = forwardRef((_, ref) => {
     defaultValues: {
       email: "",
       username: "",
-      password: "111111",
+      password: 111111,
     },
     mode: "onSubmit",
   });
@@ -56,8 +57,9 @@ const RegForm = forwardRef((_, ref) => {
     },
   }));
 
-  const onSubmit = async () => {
-    // const result = await registerUser(data);
+  const onSubmit = async (data: RegistrationParams) => {
+    const result = await registerUser(data);
+    console.log(result?.data)
     dispatch(toggleRegistration(false));
     dispatch(toggleThanksPopup(true));
     reset();
