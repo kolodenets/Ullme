@@ -33,8 +33,11 @@ const UploadPage = () => {
   const activeThanksPopup = useSelector(
     (state: RootState) => state.popups.activeThanksPopup
   );
+  const serverToken1 = useSelector((state: RootState) => state.tokens.token1);
+  const serverToken2 = useSelector((state: RootState) => state.tokens.token2);
   const uploadedPhoto1 = useSelector((state: RootState) => state.photos.photo1);
   const uploadedPhoto2 = useSelector((state: RootState) => state.photos.photo2);
+
   const dispatch: AppDispatch = useDispatch();
 
   const [openLimitPopup, setOpenLimitPopup] = useState(false);
@@ -53,12 +56,12 @@ const UploadPage = () => {
   };
 
   useEffect(() => {
-    if (uploadedPhoto1 && uploadedPhoto2 && policyChecked) {
+    if (serverToken1 && serverToken2 && policyChecked && !error1 && !error2) {
       setIsDisabled(false);
     } else {
       setIsDisabled(true);
     }
-  }, [uploadedPhoto1, uploadedPhoto2, policyChecked]);
+  }, [serverToken1, serverToken2, error1, error2, policyChecked]);
 
   useEffect(() => {
     dispatch(setPhoto1(null));
@@ -129,7 +132,6 @@ const UploadPage = () => {
                           setError1(true);
                         } else {
                           setError1(false);
-                          dispatch(setPhoto1(convertFile(photo as Blob)));
                           dispatch(setToken1(result.data.token));
                         }
                       });
@@ -191,7 +193,6 @@ const UploadPage = () => {
                           setError2(true);
                         } else {
                           setError2(false);
-                          dispatch(setPhoto2(convertFile(photo as Blob)));
                           dispatch(setToken2(result.data.token));
                         }
                       });

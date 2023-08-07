@@ -14,7 +14,6 @@ import ShareNetwork20 from "../../../public/assets/icons/ShareNetwork20.svg";
 import Copy20 from "../../../public/assets/svg/copyToClipboard20.svg";
 import Copy32 from "../../../public/assets/svg/copyToClipboard32.svg";
 import CardImg from "../../../public/assets/images/forCard.png";
-import { checkAttempts } from "../../shared/api/checkAttempts";
 
 import { useWindowDimensions } from "../../shared/hooks/useWindowDimensions";
 import s from "./Result.module.scss";
@@ -28,6 +27,7 @@ import {
   toggleSendLinkPopup,
 } from "../../store/slices/popupsSlice";
 import Popup from "../../components/Popup/Popup";
+import { mock_results } from "../../shared/mocks/mock_results";
 
 const ResultPage = () => {
   // const photo1 = localStorage.getItem("photo1");
@@ -49,6 +49,7 @@ const ResultPage = () => {
   const [percentage, setPercentage] = useState<number | undefined>(undefined);
   const [percentageToShow, setPercentageToShow] = useState<number>(0);
   const [visibleText, setVisibleText] = useState<boolean>(false);
+  const [textToShow, setTextToShow] = useState<number>(2);
 
   // const mainToken = localStorage.getItem("token1")!;
   // const compareToken = localStorage.getItem("token2")!;
@@ -71,17 +72,6 @@ const ResultPage = () => {
       if (current >= percent) {
         setVisibleText(true);
       }
-      // if (current < percent) {
-      //   if (current > 0.6 * percent) {
-      //     setTimeout(go, 100);
-      //   } else if (current > 0.75 * percent) {
-      //     setTimeout(go, 50 + current * 2);
-      //   } else if (current > 0.85 * percent) {
-      //     setTimeout(go, 50 + current * 3);
-      //   } else {
-      //     setTimeout(go, 25);
-      //   }
-      // }
       if (current < percent) {
         setTimeout(go, 25);
       }
@@ -91,14 +81,11 @@ const ResultPage = () => {
   };
 
   useEffect(() => {
-    const receiveResult = async () => {
-      await checkAttempts();
-      getResult();
-    };
+    getResult();
     // setTimeout(() => {
     //   setPercentage(0.86)
     // }, 1000)
-    receiveResult()
+
     // checkAttempts();
     // getResult();
   }, []);
@@ -106,6 +93,7 @@ const ResultPage = () => {
   useEffect(() => {
     if (percentage) {
       printPercents(Math.floor(percentage));
+      setTextToShow(Math.trunc(percentage / 20));
     }
   }, [percentage]);
 
@@ -138,8 +126,7 @@ const ResultPage = () => {
           </div>
 
           <p className={cn(s.resultText, { [s.visible]: visibleText })}>
-            In the morning after waking up you can have a feeling that you're
-            looking in the mirror. You look so much alike!
+            {mock_results[textToShow]}
           </p>
           <Button
             className={s.checkSimilarityBig}
@@ -180,6 +167,7 @@ const ResultPage = () => {
               photo2={photo2}
               percentage={percentageToShow}
               isVisibleText={visibleText}
+              resultText={mock_results[textToShow]}
             />
           </div>
 
